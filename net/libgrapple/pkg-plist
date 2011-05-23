@@ -1,0 +1,20 @@
+include/grapple/grapple.h
+include/grapple/grapple_callback.h
+include/grapple/grapple_certificate.h
+include/grapple/grapple_client.h
+include/grapple/grapple_defines.h
+include/grapple/grapple_error.h
+include/grapple/grapple_lobby.h
+include/grapple/grapple_lobby_types.h
+include/grapple/grapple_lobbyclient.h
+include/grapple/grapple_message.h
+include/grapple/grapple_protocols.h
+include/grapple/grapple_server.h
+include/grapple/grapple_tools.h
+include/grapple/grapple_types.h
+lib/libgrapple-0.9.so
+lib/libgrapple-0.9.so.7
+lib/libgrapple.a
+lib/libgrapple.la
+lib/libgrapple.so
+@dirrm include/grapple

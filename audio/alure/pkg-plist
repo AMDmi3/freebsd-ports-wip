@@ -1,0 +1,5 @@
+include/AL/alure.h
+lib/libalure.so
+lib/libalure.so.1
+lib/libalure.so.1.0.72
+libdata/pkgconfig/alure.pc
