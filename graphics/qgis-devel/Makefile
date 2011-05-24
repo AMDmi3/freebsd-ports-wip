@@ -6,11 +6,11 @@
 #
 
 PORTNAME=	qgis
-PORTVERSION=	1.6.0
-PORTREVISION=	3
+PORTVERSION=	1.7.0.r1
 CATEGORIES=	graphics geography
-MASTER_SITES=	http://qgis.org/downloads/ \
-		http://download.osgeo.org/qgis/src/
+MASTER_SITES=	https://download.github.com/
+PKGNAMESUFFIX=	-devel
+DISTNAME=	qgis-Quantum-GIS-694c356
 
 MAINTAINER=	wen@FreeBSD.org
 COMMENT=	Geographical Information System (GIS) data viewer
@@ -21,7 +21,6 @@ LIB_DEPENDS=	geos:${PORTSDIR}/graphics/geos \
 		qwt.5:${PORTSDIR}/x11-toolkits/qwt5 \
 		gdal:${PORTSDIR}/graphics/gdal
 
-USE_BZIP2=	yes
 USE_PYTHON=	yes
 USE_BISON=	build
 USE_CMAKE=	yes
@@ -32,7 +31,6 @@ CMAKE_ENV+=	QMAKESPEC=${QMAKESPEC}
 QT_COMPONENTS=	gui svg xml network sql designer linguist_build \
 		qmake_build moc_build rcc_build uic_build
 
-WRKSRC=		${WRKDIR}/${PORTNAME}-${PORTVERSION}
 GNU_CONFIGURE=	yes
 CONFIGURE_ARGS=	--with-qtdir=${QTDIR}
 USE_LDCONFIG=	yes
@@ -86,7 +84,7 @@ BUILD_DEPENDS+=	${PYTHON_PKGNAMEPREFIX}sip>=4.8.2:${PORTSDIR}/devel/py-sip \
 		${PYTHON_PKGNAMEPREFIX}sqlite3>=2.6.5:${PORTSDIR}/databases/py-sqlite3
 .endif
 
-MAN1=		qgis.1 qgis_help.1
+MAN1=		qgis.1
 
 post-patch:
 		${REINPLACE_CMD} -e 's# dl##g' \
