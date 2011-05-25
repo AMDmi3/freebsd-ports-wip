@@ -1,4 +1,4 @@
 Completeness:	full
-Usability:	untested
-Not in tree:	untested
+Usability:	too buggy
+Not in tree:	too buggy
 Tinderbox:	2011-05-24: success
