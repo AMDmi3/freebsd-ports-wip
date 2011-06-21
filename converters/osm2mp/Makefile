@@ -31,6 +31,7 @@ SUB_FILES=	pkg-message
 
 PORTEXAMPLES=	*
 
+# XXX: these are for configs to be useable from ${DATADIR}
 #post-patch:
 #	@${REINPLACE_CMD} -e 's|garmin.yml|${DATADIR}/&|' ${WRKSRC}/osm2mp.pl
 #	@${REINPLACE_CMD} -e 's|iso-3166-1-a2-en.txt|${DATADIR}/&|' ${WRKSRC}/*.yml
