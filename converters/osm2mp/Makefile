@@ -1,0 +1,46 @@
+# New ports collection makefile for:	osm2mp
+# Date created:		21 Jun 2011
+# Whom:			Dmitry Marakasov <amdmi3@FreeBSD.org>
+#
+# $FreeBSD$
+#
+
+PORTNAME=	osm2mp
+PORTVERSION=	r472
+CATEGORIES=	converters geography
+MASTER_SITES=	http://mirror.amdmi3.ru/distfiles/
+
+MAINTAINER=	amdmi3@FreeBSD.org
+COMMENT=	OpenStreetMap data into Polish map format (MP) convertor
+
+RUN_DEPENDS=	${SITE_PERL}/YAML.pm:${PORTSDIR}/textproc/p5-YAML \
+		${SITE_PERL}/Encode/Locale.pm:${PORTSDIR}/converters/p5-Encode-Locale \
+		${SITE_PERL}/Math/Polygon.pm:${PORTSDIR}/math/p5-Math-Polygon \
+		${SITE_PERL}/Math/Polygon/Tree.pm:${PORTSDIR}/math/p5-Math-Polygon-Tree \
+		${SITE_PERL}/Tree/R.pm:${PORTSDIR}/devel/p5-Tree-R \
+		${SITE_PERL}/${PERL_ARCH}/Template.pm:${PORTSDIR}/www/p5-Template-Toolkit \
+		${SITE_PERL}/${PERL_ARCH}/Math/Geometry/Planar/GPC/Polygon.pm:${PORTSDIR}/math/p5-Math-Geometry-Planar-GPC-Polygon \
+		${SITE_PERL}/${PERL_ARCH}/List/MoreUtils.pm:${PORTSDIR}/lang/p5-List-MoreUtils
+
+USE_PERL5_RUN=	yes
+NO_BUILD=	yes
+
+PLIST_FILES=	bin/osm2mp
+
+SUB_FILES=	pkg-message
+
+PORTEXAMPLES=	*
+
+#post-patch:
+#	@${REINPLACE_CMD} -e 's|garmin.yml|${DATADIR}/&|' ${WRKSRC}/osm2mp.pl
+#	@${REINPLACE_CMD} -e 's|iso-3166-1-a2-en.txt|${DATADIR}/&|' ${WRKSRC}/*.yml
+
+do-install:
+	${INSTALL_SCRIPT} ${WRKSRC}/osm2mp.pl ${PREFIX}/bin/osm2mp
+.if !defined(NOPORTEXAMPLES)
+	${MKDIR} ${EXAMPLESDIR}
+	cd ${WRKSRC} && ${COPYTREE_SHARE} '*.cmap *.yml *.txt *.typ polish-mp' ${EXAMPLESDIR}/
+	@${ECHO_CMD}; ${CAT} ${PKGMESSAGE}; ${ECHO_CMD}
+.endif
+
+.include <bsd.port.mk>
