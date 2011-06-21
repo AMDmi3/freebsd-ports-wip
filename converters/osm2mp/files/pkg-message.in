@@ -1,0 +1,5 @@
+You can use configs from %%EXAMPLESDIR%% as is or modify these to
+suit your needs.
+
+Currently, you'll have to copy these files into some directory you
+own and work with osm2mp from there.
