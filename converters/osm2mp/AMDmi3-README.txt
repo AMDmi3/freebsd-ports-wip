@@ -1,4 +1,4 @@
-Completeness:	full, but not sure what to do with configs
-Usability:      full
-Not in tree:	untested, no official tarballs
+Completeness:	full
+Usability:	full, upstream bug reported
+Not in tree:	awaiting bug resolution
 Tinderbox:	2011-06-21: success
