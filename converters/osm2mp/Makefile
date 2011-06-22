@@ -6,7 +6,7 @@
 #
 
 PORTNAME=	osm2mp
-PORTVERSION=	r474
+PORTVERSION=	r475
 CATEGORIES=	converters geography
 MASTER_SITES=	http://mirror.amdmi3.ru/distfiles/
 
