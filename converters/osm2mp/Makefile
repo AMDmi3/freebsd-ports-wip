@@ -24,6 +24,7 @@ RUN_DEPENDS=	${SITE_PERL}/YAML.pm:${PORTSDIR}/textproc/p5-YAML \
 
 LICENSE=	GPLv2
 
+USE_BZIP2=	yes
 USE_PERL5_RUN=	yes
 NO_BUILD=	yes
 
