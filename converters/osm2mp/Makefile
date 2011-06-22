@@ -22,6 +22,8 @@ RUN_DEPENDS=	${SITE_PERL}/YAML.pm:${PORTSDIR}/textproc/p5-YAML \
 		${SITE_PERL}/${PERL_ARCH}/Math/Geometry/Planar/GPC/Polygon.pm:${PORTSDIR}/math/p5-Math-Geometry-Planar-GPC-Polygon \
 		${SITE_PERL}/${PERL_ARCH}/List/MoreUtils.pm:${PORTSDIR}/lang/p5-List-MoreUtils
 
+LICENSE=	GPLv2
+
 USE_PERL5_RUN=	yes
 NO_BUILD=	yes
 
