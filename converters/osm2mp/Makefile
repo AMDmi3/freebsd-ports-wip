@@ -6,7 +6,7 @@
 #
 
 PORTNAME=	osm2mp
-PORTVERSION=	r472
+PORTVERSION=	r474
 CATEGORIES=	converters geography
 MASTER_SITES=	http://mirror.amdmi3.ru/distfiles/
 
@@ -25,23 +25,15 @@ RUN_DEPENDS=	${SITE_PERL}/YAML.pm:${PORTSDIR}/textproc/p5-YAML \
 USE_PERL5_RUN=	yes
 NO_BUILD=	yes
 
-PLIST_FILES=	bin/osm2mp
-
 SUB_FILES=	pkg-message
 
-PORTEXAMPLES=	*
-
-# XXX: these are for configs to be useable from ${DATADIR}
-#post-patch:
-#	@${REINPLACE_CMD} -e 's|garmin.yml|${DATADIR}/&|' ${WRKSRC}/osm2mp.pl
-#	@${REINPLACE_CMD} -e 's|iso-3166-1-a2-en.txt|${DATADIR}/&|' ${WRKSRC}/*.yml
+post-patch:
+	@${REINPLACE_CMD} -e 's|garmin.yml|${DATADIR}/&|' ${WRKSRC}/osm2mp.pl
 
 do-install:
 	${INSTALL_SCRIPT} ${WRKSRC}/osm2mp.pl ${PREFIX}/bin/osm2mp
-.if !defined(NOPORTEXAMPLES)
-	${MKDIR} ${EXAMPLESDIR}
-	cd ${WRKSRC} && ${COPYTREE_SHARE} '*.cmap *.yml *.txt *.typ polish-mp' ${EXAMPLESDIR}/
+	${MKDIR} ${DATADIR}
+	cd ${WRKSRC} && ${COPYTREE_SHARE} '*.cmap *.yml *.txt *.typ polish-mp' ${DATADIR}/
 	@${ECHO_CMD}; ${CAT} ${PKGMESSAGE}; ${ECHO_CMD}
-.endif
 
 .include <bsd.port.mk>
