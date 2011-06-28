@@ -28,7 +28,6 @@ BUILD_DEPENDS=	${LOCALBASE}/bin/freetype-config:${PORTSDIR}/print/freetype2 \
 LICENSE=	LGPL21
 LICENSE_FILE=   ${WRKSRC}/COPYING
 
-USE_PGSQL=	yes
 USE_BZIP2=	yes
 USE_PYTHON=	2.5+
 USE_LDCONFIG=	yes
@@ -37,7 +36,11 @@ USE_AUTOTOOLS=	libltdl
 USE_GNOME=	pkgconfig libxml2
 WRKSRC=		${WRKDIR}/${PORTNAME}-${PORTVERSION}
 
-OPTIONS=	CAIRO "Enable cairo rendering" on
+INPUT_PLUGINS=	raster shape
+
+OPTIONS=	CAIRO "Enable cairo rendering" on \
+		POSTGIS "Postgis input plugin" on \
+		OSM "OSM input plugin" off
 
 .include <bsd.port.options.mk>
 
@@ -49,10 +52,28 @@ LIB_DEPENDS+=	cairo.2:${PORTSDIR}/graphics/cairo \
 BUILD_DEPENDS+=	${PYTHON_PKGNAMEPREFIX}cairo>=1.8.2:${PORTSDIR}/graphics/py-cairo
 .endif
 
+.if defined(WITH_OSM)
+INPUT_PLUGINS+=	osm
+LIB_DEPENDS+=	curl.6:${PORTSDIR}/ftp/curl
+PLIST_SUB+=	OSM=""
+.else
+PLIST_SUB+=	OSM="@comment "
+.endif
+
+.if !defined(WITHOUT_POSTGIS)
+INPUT_PLUGINS+=	postgis
+USE_PGSQL=	yes
+PLIST_SUB+=	POSTGIS=""
+.else
+PLIST_SUB+=	POSTGIS="@comment "
+.endif
+
+SCONS_ENV+=	INPUT_PLUGINS="`${ECHO} ${INPUT_PLUGINS} | ${TR} ' ' ,`"
+
 .include <bsd.port.pre.mk>
 
 .if defined (MAKE_JOBS_NUMBER)
-SCONS_ARGS+=     JOBS=${MAKE_JOBS_NUMBER}
+SCONS_ENV+=	JOBS=${MAKE_JOBS_NUMBER}
 .endif
 
 post-patch:
