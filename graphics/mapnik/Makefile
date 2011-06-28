@@ -8,7 +8,7 @@
 PORTNAME=	mapnik
 PORTVERSION=	0.7.1
 CATEGORIES=	graphics geography
-MASTER_SITES=	${MASTER_SITE_BERLIOS}/${PORTNAME}/
+MASTER_SITES=	BERLIOS
 
 MAINTAINER=	wenheping@gmail.com
 COMMENT=	A Free Toolkit For Developing Mapping Applications
