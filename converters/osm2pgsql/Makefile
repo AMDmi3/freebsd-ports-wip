@@ -32,6 +32,9 @@ PORTDOCS=	ChangeLog README AUTHORS TODO
 
 MAN1=		osm2pgsql.1
 
+post-patch:
+	@${REINPLACE_CMD} -e 's|/usr/local|${LOCALBASE}|' ${WRKSRC}/m4/*.m4
+
 run-autotools:
 	cd ${WRKSRC} && ${SETENV} ${AUTOTOOLS_ENV} ./autogen.sh
 
