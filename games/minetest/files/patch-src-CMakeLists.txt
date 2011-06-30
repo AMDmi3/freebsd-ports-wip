@@ -1,5 +1,5 @@
---- src/CMakeLists.txt.orig	2011-06-18 23:31:24.000000000 +0400
-+++ src/CMakeLists.txt	2011-06-19 12:35:29.000000000 +0400
+--- src/CMakeLists.txt.orig	2011-06-23 15:10:46.000000000 +0400
++++ src/CMakeLists.txt	2011-06-30 18:07:30.000000000 +0400
 @@ -48,7 +48,7 @@
  		endif(APPLE)
  	endif(BUILD_CLIENT)
@@ -27,3 +27,11 @@
  	set(CMAKE_CXX_FLAGS_DEBUG "-g -O1 -Wall ${WARNING_FLAGS}")
  
  	if(USE_GPROF)
+@@ -223,7 +219,6 @@
+ #
+ 
+ # Example configuration file
+-install(FILES "${CMAKE_CURRENT_SOURCE_DIR}/../minetest.conf.example" DESTINATION ${EXAMPLE_CONF_DIR})
+ 
+ if(BUILD_CLIENT)
+ 	install(TARGETS minetest DESTINATION ${BINDIR})

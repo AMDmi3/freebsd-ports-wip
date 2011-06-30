@@ -24,6 +24,9 @@ MAKE_JOBS_SAFE=	yes
 
 WRKSRC=		${WRKDIR}/celeron55-minetest-9bc10c75dff2
 
+PORTDOCS=	*
+PORTEXAMPLES=	*
+
 OPTIONS=	CLIENT	"Build client" on \
 		SERVER	"Build server" on \
 		OPTIMIZED_CFLAGS "Enabled additional optimizations" on
@@ -58,5 +61,15 @@ post-patch:
 		${WRKSRC}/src/porting.cpp
 	@${REINPLACE_CMD} -e 's|/usr/local|${LOCALBASE}|' \
 		${WRKSRC}/cmake/Modules/FindIrrlicht.cmake
+
+post-install:
+.if !defined(NOPORTDOCS)
+	${MKDIR} ${DOCSDIR}
+	${INSTALL_DATA} ${WRKSRC}/doc/README.txt ${DOCSDIR}/
+.endif
+.if !defined(NOPORTEXAMPLES)
+	${MKDIR} ${EXAMPLESDIR}
+	${INSTALL_DATA} ${WRKSRC}/minetest.conf.example ${EXAMPLESDIR}/
+.endif
 
 .include <bsd.port.mk>

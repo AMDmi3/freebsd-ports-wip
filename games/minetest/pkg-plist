@@ -1,7 +1,5 @@
 %%CLIENT%%bin/minetest
 %%SERVER%%bin/minetestserver
-%%DOCSDIR%%/README.txt
-%%DOCSDIR%%/minetest.conf.example
 %%CLIENT%%%%DATADIR%%/chest_front.png
 %%CLIENT%%%%DATADIR%%/chest_side.png
 %%CLIENT%%%%DATADIR%%/chest_top.png
@@ -65,4 +63,3 @@
 %%CLIENT%%%%DATADIR%%/water.png
 %%CLIENT%%%%DATADIR%%/wood.png
 %%CLIENT%%@dirrm %%DATADIR%%
-@dirrm %%DOCSDIR%%
