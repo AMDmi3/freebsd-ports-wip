@@ -174,6 +174,13 @@ share/mscore-1.1/wallpaper/paper4.png
 share/mscore-1.1/wallpaper/paper5.png
 share/pixmaps/mscore.png
 share/pixmaps/mscore.xpm
+%%QT_PLUGINDIR_REL%%/designer/libawlplugin.so
+%%QT_PLUGINDIR_REL%%/script/libqtscript_core.so
+%%QT_PLUGINDIR_REL%%/script/libqtscript_gui.so
+%%QT_PLUGINDIR_REL%%/script/libqtscript_network.so
+%%QT_PLUGINDIR_REL%%/script/libqtscript_uitools.so
+%%QT_PLUGINDIR_REL%%/script/libqtscript_xml.so
+@dirrmtry %%QT_PLUGINDIR_REL%%/script
 @dirrm share/mscore-1.1/wallpaper
 @dirrm share/mscore-1.1/templates
 @dirrm share/mscore-1.1/styles

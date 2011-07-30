@@ -17,6 +17,8 @@ COMMENT=	Empty comment
 LIB_DEPENDS=	asound.2:${PORTSDIR}/audio/alsa-lib \
 		sndfile.1:${PORTSDIR}/audio/libsndfile
 
+CONFLICTS=	qtscriptgenerator-*
+
 USE_BZIP2=	yes
 USE_CMAKE=	yes
 USE_QT_VER=	4
@@ -52,10 +54,8 @@ post-patch:
 	@${REINPLACE_CMD} -e 's|/usr/include/freetype2|${LOCALBASE}/include/freetype2|; \
 		s|-lfreetype|${LOCALBASE}/lib/libfreetype.so|' \
 		${WRKSRC}/mscore/mscore/CMakeLists.txt
-# XXX: optional
+# XXX: make optional
 	@${REINPLACE_CMD} -e '/TargetDoc.cmake/ d' ${WRKSRC}/mscore/CMakeLists.txt
-# XXX: what is it? maybe its needed
-	@${REINPLACE_CMD} -e '/^install/ d' ${WRKSRC}/mscore/awl/CMakeLists.txt
 # XXX: fix CFLAGS override and useless -g in all CMakeLists
 
 .include <bsd.port.mk>
