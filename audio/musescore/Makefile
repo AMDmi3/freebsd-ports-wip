@@ -41,10 +41,10 @@ EXTRA_PATCHES+=	${PATCHDIR}/extra-patch-log2
 .endif
 
 .if !defined(WITHOUT_JACK)
-CMAKE_ARGS+=	-DBUILD_JACK_BOOL=ON
+CMAKE_ARGS+=	-DBUILD_JACK:BOOL=ON
 LIB_DEPENDS+=	jack.0:${PORTSDIR}/audio/jack
 .else
-CMAKE_ARGS+=	-DBUILD_JACK_BOOL=OFF
+CMAKE_ARGS+=	-DBUILD_JACK:BOOL=OFF
 .endif
 
 .if !defined(WITHOUT_PORTAUDIO)
@@ -58,7 +58,7 @@ post-patch:
 	@${FIND} ${WRKSRC} -name CMakeLists.txt -print0 | ${XARGS} -0 ${REINPLACE_CMD} -e \
 		'/set(CMAKE_CXX_FLAGS/ { s|-g||; /$${CMAKE_CXX_FLAGS}/ ! s|"|&$${CMAKE_CXX_FLAGS} |; }'
 .if defined(WITHOUT_PORTAUDIO)
-	@${REINPLACE_CMD} -ie '/PKGCONFIG.*portaudio/ d' ${WRKSRC}/mscore/CMakeLists.txt
+	@${REINPLACE_CMD} -e '/PKGCONFIG.*portaudio/ d' ${WRKSRC}/mscore/CMakeLists.txt
 .endif
 
 post-install:
