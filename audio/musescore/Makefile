@@ -52,15 +52,14 @@ LIB_DEPENDS+=	portaudio.2:${PORTSDIR}/audio/portaudio2
 .endif
 
 post-patch:
-.if defined(WITHOUT_PORTAUDIO)
-	@${REINPLACE_CMD} -ie '/PKGCONFIG.*portaudio/ d' ${WRKSRC}/mscore/CMakeLists.txt
-.endif
 	@${REINPLACE_CMD} -e 's|/usr/include/freetype2|${LOCALBASE}/include/freetype2|; \
 		s|-lfreetype|${LOCALBASE}/lib/libfreetype.so|' \
 		${WRKSRC}/mscore/mscore/CMakeLists.txt
-# XXX: make optional
-	@${REINPLACE_CMD} -e '/TargetDoc.cmake/ d' ${WRKSRC}/mscore/CMakeLists.txt
-# XXX: fix CFLAGS override and useless -g in all CMakeLists
+	@${FIND} ${WRKSRC} -name CMakeLists.txt -print0 | ${XARGS} -0 ${REINPLACE_CMD} -e \
+		'/set(CMAKE_CXX_FLAGS/ { s|-g||; /$${CMAKE_CXX_FLAGS}/ ! s|"|&$${CMAKE_CXX_FLAGS} |; }'
+.if defined(WITHOUT_PORTAUDIO)
+	@${REINPLACE_CMD} -ie '/PKGCONFIG.*portaudio/ d' ${WRKSRC}/mscore/CMakeLists.txt
+.endif
 
 post-install:
 	@${ECHO}; ${CAT} ${PKGMESSAGE}; ${ECHO}
