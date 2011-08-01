@@ -36,6 +36,10 @@ OPTIONS=	JACK "Jack support" on \
 
 .include <bsd.port.options.mk>
 
+.if ${OSVERSION} < 802502 || ( ${OSVERSION} >= 900000 && ${OSVERSION} < 900027 )
+EXTRA_PATCHES+=	${PATCHDIR}/extra-patch-log2
+.endif
+
 .if !defined(WITHOUT_JACK)
 CMAKE_ARGS+=	-DBUILD_JACK_BOOL=ON
 LIB_DEPENDS+=	jack.0:${PORTSDIR}/audio/jack
