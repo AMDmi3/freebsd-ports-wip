@@ -12,7 +12,7 @@ MASTER_SITES=	SF/mscore/mscore/MuseScore-${PORTVERSION}
 DISTNAME=	mscore-${PORTVERSION}
 
 MAINTAINER=	amdmi3@FreeBSD.org
-COMMENT=	Empty comment
+COMMENT=	Free music composition & notation software
 
 LIB_DEPENDS=	asound.2:${PORTSDIR}/audio/alsa-lib \
 		sndfile.1:${PORTSDIR}/audio/libsndfile
