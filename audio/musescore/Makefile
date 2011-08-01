@@ -17,7 +17,7 @@ COMMENT=	Free music composition & notation software
 LIB_DEPENDS=	asound.2:${PORTSDIR}/audio/alsa-lib \
 		sndfile.1:${PORTSDIR}/audio/libsndfile
 
-CONFLICTS=	qtscriptgenerator-*
+CONFLICTS=	qtscriptgenerator-[0-9]*
 
 USE_BZIP2=	yes
 USE_CMAKE=	yes
