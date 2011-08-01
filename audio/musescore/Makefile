@@ -58,4 +58,7 @@ post-patch:
 	@${REINPLACE_CMD} -e '/TargetDoc.cmake/ d' ${WRKSRC}/mscore/CMakeLists.txt
 # XXX: fix CFLAGS override and useless -g in all CMakeLists
 
+post-install:
+	@${ECHO}; ${CAT} ${PKGMESSAGE}; ${ECHO}
+
 .include <bsd.port.mk>
