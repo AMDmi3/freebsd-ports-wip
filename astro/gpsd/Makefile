@@ -22,7 +22,7 @@ USE_SCONS=	yes
 USE_RC_SUBR=	gpsd
 USE_PYTHON=	yes
 INSTALLS_EGGINFO=	yes
-PYDISTUTILS_PKGNAME=	gps
+PYDISTUTILS_EGGINFO=	gps-${PORTVERSION}.egg-info
 
 SCONS_ENV+=	prefix="${PREFIX}" mandir="/man"
 
