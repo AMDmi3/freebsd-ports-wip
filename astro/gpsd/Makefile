@@ -81,172 +81,182 @@ OPTIONS=	AIVDM "Aivdm support" on \
 
 .include <bsd.port.options.mk>
 
-.if defined(WITHOUT_AIVDM)
-SCONS_ARGS+=	aivdm=no
-.endif
+# Options related to GPS protocols
+#.if defined(WITHOUT_NMEA)
+#SCONS_ARGS+=	nmea=no
+#.endif
 
-.if defined(WITHOUT_ASHTECH)
-SCONS_ARGS+=	ashtech=no
-.endif
+#.if defined(WITHOUT_ASHTECH)
+#SCONS_ARGS+=	ashtech=no
+#.endif
+
+#.if defined(WITHOUT_EARTHMATE)
+#SCONS_ARGS+=	earthmate=no
+#.endif
+
+#.if defined(WITHOUT_EVERMORE)
+#SCONS_ARGS+=	evermore=no
+#.endif
+
+#.if defined(WITHOUT_FV18)
+#SCONS_ARGS+=	fv18=no
+#.endif
+
+#.if defined(WITHOUT_GARMIN)
+#SCONS_ARGS+=	garmin=no
+#.endif
+
+#.if defined(WITHOUT_GARMINTXT)
+#SCONS_ARGS+=	garmintxt=no
+#.endif
+
+#.if defined(WITHOUT_GEOSTAR)
+#SCONS_ARGS+=	geostar=no
+#.endif
+
+#.if defined(WITHOUT_ITRAX)
+#SCONS_ARGS+=	itrax=no
+#.endif
+
+#.if defined(WITHOUT_MTK)
+#SCONS_ARGS+=	mtk3301=no
+#.endif
+
+#.if defined(WITHOUT_NAVCOM)
+#SCONS_ARGS+=	navcom=no
+#.endif
+
+#.if defined(WITHOUT_ONCORE)
+#SCONS_ARGS+=	oncore=no
+#.endif
+
+#.if defined(WITHOUT_SIRF)
+#SCONS_ARGS+=	sirf=no
+#.endif
+
+#.if defined(WITHOUT_SUPERSTARII)
+#SCONS_ARGS+=	superstar2=no
+#.endif
+
+#.if defined(WITHOUT_TNT)
+#SCONS_ARGS+=	tnt=no
+#.endif
+
+#.if defined(WITHOUT_TRIPMATE)
+#SCONS_ARGS+=	tripmate=no
+#.endif
+
+#.if defined(WITHOUT_TSIP)
+#SCONS_ARGS+=	tsip=no
+#.endif
+
+#.if defined(WITHOUT_UBX)
+#SCONS_ARGS+=	ubx=no
+#.endif
+
+# Options related to Non-GPS protocols
+#.if defined(WITHOUT_AIVDM)
+#SCONS_ARGS+=	aivdm=no
+#.endif
+
+#.if defined(WITHOUT_GPSCLOCK)
+#SCONS_ARGS+=	gpsclock=no
+#.endif
+
+#.if defined(WITHOUT_NTRIP)
+#SCONS_ARGS+=	ntrip=no
+#.endif
+
+#.if defined(WITHOUT_OCEANSERVER)
+#SCONS_ARGS+=	oceanserver=no
+#.endif
+
+#.if defined(WITHOUT_RTCM104V2)
+#SCONS_ARGS+=	rtcm104v2=no
+#.endif
+
+#.if defined(WITHOUT_RTCM104V3)
+#SCONS_ARGS+=	rtcm104v3=no
+#.endif
+
+# Time service
+#.if defined(WITHOUT_NTPSHM)
+#SCONS_ARGS+=	ntpshm=no
+#.endif
+
+#.if defined(WITHOUT_PPS)
+#SCONS_ARGS+=	pps=no
+#.endif
+
+#.if defined(WITH_PPSONCTS)
+#SCONS_ARGS+=	pps_on_cts=yes
+#.endif
+
+# Export methods
+#.if defined(WITHOUT_SOCKEXPORT)
+#SCONS_ARGS+=	socket_export=no
+#.endif
 
 .if defined(WITH_DBUS)
-BROKEN=		DBUS support broken at the moment, sorry
-LIB_DEPENDS+=	dbus:${PORTSDIR}/devel/dbus
+LIB_DEPENDS+=	dbus:${PORTSDIR}/devel/dbus \
+		dbus-glib-1.2:${PORTSDIR}/devel/dbus-glib
 SCONS_ARGS+=	dbus_export=yes
-.endif
-
-.if defined(WITHOUT_CPPBIND)
-SCONS_ARGS+=	libgpsmm=no
-.endif
-
-.if defined(WITHOUT_EARTHMATE)
-SCONS_ARGS+=	earthmate=no
-.endif
-
-.if defined(WITHOUT_EVERMORE)
-SCONS_ARGS+=	evermore=no
-.endif
-
-.if defined(WITHOUT_FV18)
-SCONS_ARGS+=	fv18=no
-.endif
-
-.if defined(WITHOUT_GARMIN)
-SCONS_ARGS+=	garmin=no
-.endif
-
-.if defined(WITHOUT_GARMINTXT)
-SCONS_ARGS+=	garmintxt=no
-.endif
-
-.if defined(WITHOUT_GEOSTAR)
-SCONS_ARGS+=	geostar=no
-.endif
-
-.if defined(WITHOUT_GPSCLOCK)
-SCONS_ARGS+=	gpsclock=no
-.endif
-
-.if defined(WITH_GTK2)
-USE_GNOME+=	pygtk2
-.endif
-
-.if defined(WITHOUT_IP6)
-SCONS_ARGS+=	ipv6=no
-.endif
-
-.if defined(WITHOUT_ITRAX)
-SCONS_ARGS+=	itrax=no
-.endif
-
-.if defined(WITHOUT_MTK)
-SCONS_ARGS+=	mtk3301=no
-.endif
-
-.if defined(WITHOUT_NAVCOM)
-SCONS_ARGS+=	navcom=no
-.endif
-
-.if defined(WITHOUT_NCURSES)
-SCONS_ARGS+=	ncurses=no
-.else
-BROKEN=		ncurses support broken at the moment, sorry
-.endif
-
-.if defined(WITHOUT_NETFEED)
-SCONS_ARGS+=	netfeed=no
-.endif
-
-.if defined(WITHOUT_NMEA)
-SCONS_ARGS+=	nmea=no
-.endif
-
-.if defined(WITHOUT_NTPSHM)
-SCONS_ARGS+=	ntpshm=no
-.endif
-
-.if defined(WITHOUT_NTRIP)
-SCONS_ARGS+=	ntrip=no
-.endif
-
-.if defined(WITHOUT_OCEANSERVER)
-SCONS_ARGS+=	oceanserver=no
-.endif
-
-.if defined(WITHOUT_OLDPROTO)
-SCONS_ARGS+=	oldstyle=no
-.endif
-
-.if defined(WITHOUT_ONCORE)
-SCONS_ARGS+=	oncore=no
-.endif
-
-.if defined(WITHOUT_PASSTHROUGH)
-SCONS_ARGS+=	passthrough=no
-.endif
-
-.if defined(WITHOUT_PPS)
-SCONS_ARGS+=	pps=no
-.endif
-
-.if defined(WITH_PPSONCTS)
-SCONS_ARGS+=	pps_on_cts=yes
-.endif
-
-.if defined(WITH_PROFILING)
-SCONS_ARGS+=	profiling=yes
-.endif
-
-.if defined(WITHOUT_RECONFIGURE)
-SCONS_ARGS+=	reconfigure=no
-.endif
-
-.if defined(WITHOUT_RTCM104V2)
-SCONS_ARGS+=	rtcm104v2=no
-.endif
-
-.if defined(WITHOUT_RTCM104V3)
-SCONS_ARGS+=	rtcm104v3=no
 .endif
 
 .if defined(WITHOUT_SHMEXPORT)
 SCONS_ARGS+=	shm_export=no
 .endif
 
-.if defined(WITHOUT_SIRF)
-SCONS_ARGS+=	sirf=no
+# Communication
+.if defined(WITHOUT_IPV6)
+SCONS_ARGS+=	ipv6=no
 .endif
 
-.if defined(WITHOUT_SOCKEXPORT)
-SCONS_ARGS+=	socket_export=no
+#.if defined(WITHOUT_NETFEED)
+#SCONS_ARGS+=	netfeed=no
+#.endif
+
+.if defined(WITHOUT_PASSTHROUGH)
+SCONS_ARGS+=	passthrough=no
 .endif
 
-.if defined(WITHOUT_SUPERSTARII)
-SCONS_ARGS+=	superstar2=no
-.endif
-
+# Other daemon options
 .if defined(WITHOUT_TIMING)
 SCONS_ARGS+=	timing=no
 .endif
 
-.if defined(WITHOUT_TNT)
-SCONS_ARGS+=	tnt=no
-.endif
-
-.if defined(WITHOUT_TRIPMATE)
-SCONS_ARGS+=	tripmate=no
-.endif
-
-.if defined(WITHOUT_TSIP)
-SCONS_ARGS+=	tsip=no
+# Client-side options
+.if defined(WITHOUT_OLDPROTO)
+SCONS_ARGS+=	oldstyle=no
 .endif
 
 .if defined(WITH_QTBIND)
 SCONS_ARGS+=	libQgpsmm=yes
 .endif
 
-.if defined(WITHOUT_UBX)
-SCONS_ARGS+=	ubx=no
+#.if defined(WITHOUT_RECONFIGURE)
+#SCONS_ARGS+=	reconfigure=no
+#.endif
+
+.if defined(WITHOUT_CPPBIND)
+SCONS_ARGS+=	libgpsmm=no
+.endif
+
+.if defined(WITHOUT_NCURSES)
+SCONS_ARGS+=	ncurses=no
+PLIST_SUB+=	CURSES="@comment "
+.else
+PLIST_SUB+=	CURSES=""
+.endif
+
+#.if defined(WITH_GTK2)
+#USE_GNOME+=	pygtk2
+#.endif
+
+
+# Build control
+.if defined(WITH_PROFILING)
+SCONS_ARGS+=	profiling=yes
 .endif
 
 .include <bsd.port.mk>
