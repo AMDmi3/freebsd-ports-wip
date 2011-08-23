@@ -9,12 +9,14 @@ bin/gpxlogger
 bin/lcdgps
 bin/xgps
 bin/xgpsspeed
+%%CURSES%%bin/cgps
+%%CURSES%%bin/gpsmon
 include/gps.h
 include/libgpsmm.h
-lib/libQgpsmm.so
-lib/libQgpsmm.so.20
-lib/libQgpsmm.so.20.0
-lib/libQgpsmm.so.20.0.0
+@comment lib/libQgpsmm.so
+@comment lib/libQgpsmm.so.20
+@comment lib/libQgpsmm.so.20.0
+@comment lib/libQgpsmm.so.20.0.0
 lib/libgps.so
 lib/libgps.so.20
 lib/libgps.so.20.0
@@ -23,7 +25,15 @@ lib/libgpsd.so
 lib/libgpsd.so.20
 lib/libgpsd.so.20.0
 lib/libgpsd.so.20.0.0
-lib/pkgconfig/libgps.pc
-lib/pkgconfig/libgpsd.pc
+%%PYTHON_SITELIBDIR%%/gps/__init__.py
+%%PYTHON_SITELIBDIR%%/gps/client.py
+%%PYTHON_SITELIBDIR%%/gps/clienthelpers.so
+%%PYTHON_SITELIBDIR%%/gps/fake.py
+%%PYTHON_SITELIBDIR%%/gps/gps.py
+%%PYTHON_SITELIBDIR%%/gps/misc.py
+%%PYTHON_SITELIBDIR%%/gps/packet.so
+@dirrm %%PYTHON_SITELIBDIR%%/gps
+@comment libdata/pkgconfig/libgps.pc
+@comment libdata/pkgconfig/libgpsd.pc
 sbin/gpsd
 sbin/gpsdctl
