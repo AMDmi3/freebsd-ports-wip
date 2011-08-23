@@ -24,6 +24,7 @@ USE_PYTHON=	yes
 INSTALLS_EGGINFO=	yes
 PYDISTUTILS_EGGINFO=	gps-${PORTVERSION}.egg-info
 
+SCONS_BUILDENV:=${SCONS_ENV}
 SCONS_ENV+=	prefix="${PREFIX}" mandir="/man"
 
 MAN1=	cgps.1 gegps.1 gps.1 gpscat.1 gpsctl.1 gpsdecode.1 \
