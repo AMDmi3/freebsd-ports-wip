@@ -52,7 +52,6 @@ OPTIONS=	AIVDM "Aivdm support" on \
 		MTK "MTK-3301 support" on \
 		NAVCOM "Navcom support" on \
 		NCURSES "Build with ncurses(3)" off \
-		NETFEED "Build support for handling TCP/IP data sources" on \
 		NMEA "NMEA support" on \
 		NTPSHM "NTP time hinting support" on \
 		NTRIP "NTRIP support" on \
@@ -63,12 +62,10 @@ OPTIONS=	AIVDM "Aivdm support" on \
 		PPS "PPS time syncing support" on \
 		PPSONCTS "PPS pulse on CTS rather than DCD" off \
 		PROFILING "Profiling support" off \
-		RECONFIGURE "Allow gpsd to change device settings" on \
 		RTCM104V2 "rtcm104v2 support" on \
 		RTCM104V3 "rtcm104v3 support" on \
 		SHMEXPORT "Enable export via shared memory" on \
 		SIRF "SiRF chipset support" on \
-		SOCKEXPORT "Enable export over sockets" on \
 		SUPERSTARII "SuperStarII support" on \
 		TIMING "Build latency timing support" on \
 		TNT "True North Technologies support" on \
@@ -76,6 +73,11 @@ OPTIONS=	AIVDM "Aivdm support" on \
 		TSIP "Trimble TSIP support" on \
 		QTBIND "build QT bindings" off \
 		UBX "UBX protocol support" on
+
+# Doesn't build when toggled
+#		NETFEED "Build support for handling TCP/IP data sources" on \
+#		SOCKEXPORT "Enable export over sockets" on \
+#		RECONFIGURE "Allow gpsd to change device settings" on \
 
 .include <bsd.port.options.mk>
 
