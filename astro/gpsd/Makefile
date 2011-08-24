@@ -37,7 +37,6 @@ MANCOMPRESSED=	no
 
 OPTIONS=	AIVDM "Aivdm support" on \
 		ASHTECH "Ashtech support" on \
-		DBUS "DBUS support" off \
 		CPPBIND "Build C++ bindings" on \
 		EARTHMATE "DeLorme EarthMate Zodiac support" on \
 		EVERMORE "Evermore binary support" on \
@@ -74,6 +73,8 @@ OPTIONS=	AIVDM "Aivdm support" on \
 		QTBIND "build QT bindings" off \
 		UBX "UBX protocol support" on
 
+# Doesn't build
+#		DBUS "DBUS support" off \
 # Doesn't build when toggled
 #		NETFEED "Build support for handling TCP/IP data sources" on \
 #		SOCKEXPORT "Enable export over sockets" on \
@@ -199,11 +200,13 @@ OPTIONS=	AIVDM "Aivdm support" on \
 #SCONS_ARGS+=	socket_export=no
 #.endif
 
-.if defined(WITH_DBUS)
-LIB_DEPENDS+=	dbus:${PORTSDIR}/devel/dbus \
-		dbus-glib-1.2:${PORTSDIR}/devel/dbus-glib
-SCONS_ARGS+=	dbus_export=yes
-.endif
+# doesn't build; too many unsolvable problems with lib detection,
+# include paths etc.
+#.if defined(WITH_DBUS)
+#LIB_DEPENDS+=	dbus:${PORTSDIR}/devel/dbus \
+#		dbus-glib-1.2:${PORTSDIR}/devel/dbus-glib
+#SCONS_ARGS+=	dbus_export=yes
+#.endif
 
 .if defined(WITHOUT_SHMEXPORT)
 SCONS_ARGS+=	shm_export=no
