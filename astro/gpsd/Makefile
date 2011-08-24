@@ -269,11 +269,6 @@ PLIST_SUB+=	CURSES="@comment "
 PLIST_SUB+=	CURSES=""
 .endif
 
-# Won't build
-#.if defined(WITH_GTK2)
-#USE_GNOME+=	pygtk2
-#.endif
-
 # Build control
 .if defined(WITH_PROFILING)
 SCONS_ARGS+=	profiling=yes
