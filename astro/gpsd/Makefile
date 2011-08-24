@@ -242,6 +242,7 @@ QT_COMPONENTS=	network
 SCONS_ARGS+=	libQgpsmm=yes
 PLIST_SUB+=	QTBIND=""
 .else
+SCONS_ARGS+=	libQgpsmm=no
 PLIST_SUB+=	QTBIND="@comment "
 .endif
 
