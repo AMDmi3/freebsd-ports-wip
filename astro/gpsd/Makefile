@@ -197,9 +197,11 @@ SCONS_ARGS+=	pps_on_cts=yes
 .endif
 
 # Export methods
-.if defined(WITHOUT_SOCKEXPORT)
-SCONS_ARGS+=	socket_export=no
-.endif
+
+# Won't build
+#.if defined(WITHOUT_SOCKEXPORT)
+#SCONS_ARGS+=	socket_export=no
+#.endif
 
 # doesn't build; too many unsolvable problems with lib detection,
 # include paths etc.
