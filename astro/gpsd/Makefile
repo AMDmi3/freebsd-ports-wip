@@ -81,6 +81,8 @@ OPTIONS=	AIVDM "Aivdm support" on \
 
 .include <bsd.port.options.mk>
 
+# This is only temporary for my tinderbox not to try these options
+
 # Options related to GPS protocols
 #.if defined(WITHOUT_NMEA)
 #SCONS_ARGS+=	nmea=no
@@ -212,6 +214,7 @@ SCONS_ARGS+=	shm_export=no
 SCONS_ARGS+=	ipv6=no
 .endif
 
+# Won't build
 #.if defined(WITHOUT_NETFEED)
 #SCONS_ARGS+=	netfeed=no
 #.endif
@@ -234,6 +237,7 @@ SCONS_ARGS+=	oldstyle=no
 SCONS_ARGS+=	libQgpsmm=yes
 .endif
 
+# Won't build
 #.if defined(WITHOUT_RECONFIGURE)
 #SCONS_ARGS+=	reconfigure=no
 #.endif
@@ -249,6 +253,7 @@ PLIST_SUB+=	CURSES="@comment "
 PLIST_SUB+=	CURSES=""
 .endif
 
+# Won't build
 #.if defined(WITH_GTK2)
 #USE_GNOME+=	pygtk2
 #.endif
