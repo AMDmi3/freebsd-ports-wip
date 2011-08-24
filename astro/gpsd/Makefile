@@ -237,7 +237,12 @@ SCONS_ARGS+=	oldstyle=no
 .endif
 
 .if defined(WITH_QTBIND)
+USE_QT_VER=	4
+QT_COMPONENTS=	network
 SCONS_ARGS+=	libQgpsmm=yes
+PLIST_SUB+=	QTBIND=""
+.else
+PLIST_SUB+=	QTBIND="@comment "
 .endif
 
 # Won't build
@@ -260,7 +265,6 @@ PLIST_SUB+=	CURSES=""
 #.if defined(WITH_GTK2)
 #USE_GNOME+=	pygtk2
 #.endif
-
 
 # Build control
 .if defined(WITH_PROFILING)

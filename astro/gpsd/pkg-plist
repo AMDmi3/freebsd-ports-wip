@@ -13,10 +13,10 @@ bin/xgpsspeed
 %%CURSES%%bin/gpsmon
 include/gps.h
 include/libgpsmm.h
-@comment lib/libQgpsmm.so
-@comment lib/libQgpsmm.so.20
-@comment lib/libQgpsmm.so.20.0
-@comment lib/libQgpsmm.so.20.0.0
+%%QTBIND%%lib/libQgpsmm.so
+%%QTBIND%%lib/libQgpsmm.so.20
+%%QTBIND%%lib/libQgpsmm.so.20.0
+%%QTBIND%%lib/libQgpsmm.so.20.0.0
 lib/libgps.so
 lib/libgps.so.20
 lib/libgps.so.20.0
