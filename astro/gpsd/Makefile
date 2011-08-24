@@ -55,7 +55,7 @@ OPTIONS=	AIVDM "Aivdm support" on \
 		NTPSHM "NTP time hinting support" on \
 		NTRIP "NTRIP support" on \
 		OCEANSERVER "Oceanserver support" on \
-		OLDPROTO "Old (pre-JSON, pre 2.90) protocol support in client library" on \
+		OLDPROTO "Old (pre-JSON) protocol support in client lib" on \
 		ONCORE "Motorola OnCore chipset support" on \
 		PASSTHROUGH "Build support for passing through JSON" on \
 		PPS "PPS time syncing support" on \
