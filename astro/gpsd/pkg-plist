@@ -33,7 +33,7 @@ lib/libgpsd.so.20.0.0
 %%PYTHON_SITELIBDIR%%/gps/misc.py
 %%PYTHON_SITELIBDIR%%/gps/packet.so
 @dirrm %%PYTHON_SITELIBDIR%%/gps
-@comment libdata/pkgconfig/libgps.pc
-@comment libdata/pkgconfig/libgpsd.pc
+libdata/pkgconfig/libgps.pc
+libdata/pkgconfig/libgpsd.pc
 sbin/gpsd
 sbin/gpsdctl

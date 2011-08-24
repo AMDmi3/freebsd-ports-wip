@@ -1,5 +1,5 @@
 --- SConstruct.orig	2011-08-19 09:36:28.000000000 +0400
-+++ SConstruct	2011-08-24 11:18:21.000000000 +0400
++++ SConstruct	2011-08-24 13:28:35.000000000 +0400
 @@ -155,7 +155,10 @@
          j = i
          if i == "LD":
@@ -40,7 +40,7 @@
                      python_egg_info_install]
  
 -pkgconfigdir = os.path.join(installdir('libdir'), 'pkgconfig')
-+pkgconfigdir = os.path.join('libdata', 'pkgconfig')
++pkgconfigdir = os.path.join(env['prefix'], 'libdata', 'pkgconfig')
  pc_install = [ env.Install(pkgconfigdir, x) for x in ("libgps.pc", "libgpsd.pc") ]
  
  maninstall = []
