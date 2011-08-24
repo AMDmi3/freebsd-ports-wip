@@ -8,8 +8,7 @@
 PORTNAME=	gpsd
 PORTVERSION=	3.0
 CATEGORIES=	astro geography
-MASTER_SITES=	${MASTER_SITE_BERLIOS}
-MASTER_SITE_SUBDIR=	${PORTNAME}
+MASTER_SITES=	BERLIOS
 
 MAINTAINER=	glebius@FreeBSD.org
 COMMENT=	Daemon that monitors one or more GPSes attached to a host computer
