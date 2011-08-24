@@ -264,4 +264,14 @@ PLIST_SUB+=	CURSES=""
 SCONS_ARGS+=	profiling=yes
 .endif
 
+# generates .py[co] files for installed modules
+# if that's not done, ${PYTHON_SITELIBDIR}/gps will be polluted
+# with these files when module is imported from root user
+post-install:
+	@${FIND} ${PYTHON_SITELIBDIR}/gps -name "*.py" -exec \
+		${PYTHON_CMD} ${PYTHON_LIBDIR}/py_compile.py {} \;
+	@${SETENV} PYTHONOPTIMIZE=yes \
+		${FIND} ${PYTHON_SITELIBDIR}/gps -name "*.py" -exec \
+		${PYTHON_CMD} ${PYTHON_LIBDIR}/py_compile.py {} \;
+
 .include <bsd.port.mk>
