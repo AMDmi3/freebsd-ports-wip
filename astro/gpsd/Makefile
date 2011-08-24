@@ -71,7 +71,8 @@ OPTIONS=	AIVDM "Aivdm support" on \
 		TRIPMATE "DeLorme TripMate support" on \
 		TSIP "Trimble TSIP support" on \
 		QTBIND "build QT bindings" off \
-		UBX "UBX protocol support" on
+		UBX "UBX protocol support" on \
+		USB "libusb support for USB devices" on
 
 # Doesn't build
 #		DBUS "DBUS support" off \
@@ -213,6 +214,10 @@ SCONS_ARGS+=	shm_export=no
 .endif
 
 # Communication
+.if defined(WITHOUT_USB)
+SCONS_ARGS+=	usb=no
+.endif
+
 .if defined(WITHOUT_IPV6)
 SCONS_ARGS+=	ipv6=no
 .endif
