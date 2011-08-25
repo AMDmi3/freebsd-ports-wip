@@ -6,9 +6,9 @@
 #
 
 PORTNAME=	gpsd
-PORTVERSION=	3.0
+PORTVERSION=	3.0.r20110825
 CATEGORIES=	astro geography
-MASTER_SITES=	BERLIOS
+MASTER_SITES=	http://mirror.amdmi3.ru/distfiles/
 
 MAINTAINER=	glebius@FreeBSD.org
 COMMENT=	Daemon that monitors one or more GPSes attached to a host computer
@@ -16,16 +16,17 @@ COMMENT=	Daemon that monitors one or more GPSes attached to a host computer
 BUILD_DEPENDS=	docbook-xsl>=0:${PORTSDIR}/textproc/docbook-xsl \
 		xsltproc:${PORTSDIR}/textproc/libxslt
 
+USE_BZIP2=	yes
 USE_GNOME=	pkgconfig
 USE_SCONS=	yes
 USE_RC_SUBR=	gpsd
 USE_PYTHON=	yes
 INSTALLS_EGGINFO=	yes
-PYDISTUTILS_EGGINFO=	gps-${PORTVERSION}.egg-info
-MAKE_JOBS_UNSAFE=yes
+PYDISTUTILS_EGGINFO=	gps-3.1~dev.egg-info
+MAKE_JOBS_SAFE=	yes
 
 SCONS_BUILDENV=	${SCONS_ENV}
-SCONS_ARGS=	prefix="${PREFIX}" mandir="/man"
+SCONS_ARGS=	prefix="${PREFIX}" mandir="/man" pkgconfigdir="/libdata/pkgconfig"
 
 MAN1=	cgps.1 gegps.1 gps.1 gpscat.1 gpsctl.1 gpsdecode.1 \
 	gpsfake.1  gpspipe.1 gpsprof.1 xgps.1 xgpsspeed.1 \
@@ -50,6 +51,7 @@ OPTIONS=	AIVDM "Aivdm support" on \
 		ITRAX "iTrax support" on \
 		MTK "MTK-3301 support" on \
 		NAVCOM "Navcom support" on \
+		NETFEED "Build support for handling TCP/IP data sources" on \
 		NCURSES "Build with ncurses(3)" off \
 		NMEA "NMEA support" on \
 		NTPSHM "NTP time hinting support" on \
@@ -61,6 +63,7 @@ OPTIONS=	AIVDM "Aivdm support" on \
 		PPS "PPS time syncing support" on \
 		PPSONCTS "PPS pulse on CTS rather than DCD" off \
 		PROFILING "Profiling support" off \
+		RECONFIGURE "Allow gpsd to change device settings" on \
 		RTCM104V2 "rtcm104v2 support" on \
 		RTCM104V3 "rtcm104v3 support" on \
 		SHMEXPORT "Enable export via shared memory" on \
@@ -77,13 +80,13 @@ OPTIONS=	AIVDM "Aivdm support" on \
 # Doesn't build
 #		DBUS "DBUS support" off \
 # Doesn't build when toggled
-#		NETFEED "Build support for handling TCP/IP data sources" on \
 #		SOCKEXPORT "Enable export over sockets" on \
-#		RECONFIGURE "Allow gpsd to change device settings" on \
 
 .include <bsd.port.options.mk>
 
-# This is only temporary for my tinderbox not to try these options
+.if ${OSVERSION} < 800069
+LIB_DEPENDS+=	usb:${PORTSDIR}/devel/libusb
+.endif
 
 # Options related to GPS protocols
 .if defined(WITHOUT_NMEA)
@@ -224,10 +227,9 @@ SCONS_ARGS+=	usb=no
 SCONS_ARGS+=	ipv6=no
 .endif
 
-# Won't build
-#.if defined(WITHOUT_NETFEED)
-#SCONS_ARGS+=	netfeed=no
-#.endif
+.if defined(WITHOUT_NETFEED)
+SCONS_ARGS+=	netfeed=no
+.endif
 
 .if defined(WITHOUT_PASSTHROUGH)
 SCONS_ARGS+=	passthrough=no
@@ -253,10 +255,9 @@ SCONS_ARGS+=	libQgpsmm=no
 PLIST_SUB+=	QTBIND="@comment "
 .endif
 
-# Won't build
-#.if defined(WITHOUT_RECONFIGURE)
-#SCONS_ARGS+=	reconfigure=no
-#.endif
+.if defined(WITHOUT_RECONFIGURE)
+SCONS_ARGS+=	reconfigure=no
+.endif
 
 .if defined(WITHOUT_CPPBIND)
 SCONS_ARGS+=	libgpsmm=no
