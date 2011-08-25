@@ -23,7 +23,7 @@ USE_RC_SUBR=	gpsd
 USE_PYTHON=	yes
 INSTALLS_EGGINFO=	yes
 PYDISTUTILS_EGGINFO=	gps-3.1~dev.egg-info
-MAKE_JOBS_UNSAFE=yes
+MAKE_JOBS_SAFE=	yes
 
 SCONS_BUILDENV=	${SCONS_ENV}
 SCONS_ARGS=	prefix="${PREFIX}" mandir="/man" pkgconfigdir="/libdata/pkgconfig"
