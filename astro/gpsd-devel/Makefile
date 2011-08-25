@@ -51,6 +51,7 @@ OPTIONS=	AIVDM "Aivdm support" on \
 		ITRAX "iTrax support" on \
 		MTK "MTK-3301 support" on \
 		NAVCOM "Navcom support" on \
+		NETFEED "Build support for handling TCP/IP data sources" on \
 		NCURSES "Build with ncurses(3)" off \
 		NMEA "NMEA support" on \
 		NTPSHM "NTP time hinting support" on \
@@ -62,6 +63,7 @@ OPTIONS=	AIVDM "Aivdm support" on \
 		PPS "PPS time syncing support" on \
 		PPSONCTS "PPS pulse on CTS rather than DCD" off \
 		PROFILING "Profiling support" off \
+		RECONFIGURE "Allow gpsd to change device settings" on \
 		RTCM104V2 "rtcm104v2 support" on \
 		RTCM104V3 "rtcm104v3 support" on \
 		SHMEXPORT "Enable export via shared memory" on \
@@ -78,9 +80,7 @@ OPTIONS=	AIVDM "Aivdm support" on \
 # Doesn't build
 #		DBUS "DBUS support" off \
 # Doesn't build when toggled
-#		NETFEED "Build support for handling TCP/IP data sources" on \
 #		SOCKEXPORT "Enable export over sockets" on \
-#		RECONFIGURE "Allow gpsd to change device settings" on \
 
 .include <bsd.port.options.mk>
 
@@ -225,10 +225,9 @@ SCONS_ARGS+=	usb=no
 SCONS_ARGS+=	ipv6=no
 .endif
 
-# Won't build
-#.if defined(WITHOUT_NETFEED)
-#SCONS_ARGS+=	netfeed=no
-#.endif
+.if defined(WITHOUT_NETFEED)
+SCONS_ARGS+=	netfeed=no
+.endif
 
 .if defined(WITHOUT_PASSTHROUGH)
 SCONS_ARGS+=	passthrough=no
@@ -254,10 +253,9 @@ SCONS_ARGS+=	libQgpsmm=no
 PLIST_SUB+=	QTBIND="@comment "
 .endif
 
-# Won't build
-#.if defined(WITHOUT_RECONFIGURE)
-#SCONS_ARGS+=	reconfigure=no
-#.endif
+.if defined(WITHOUT_RECONFIGURE)
+SCONS_ARGS+=	reconfigure=no
+.endif
 
 .if defined(WITHOUT_CPPBIND)
 SCONS_ARGS+=	libgpsmm=no
