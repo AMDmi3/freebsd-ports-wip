@@ -6,9 +6,9 @@
 #
 
 PORTNAME=	gpsd
-PORTVERSION=	3.0
+PORTVERSION=	3.0.r20110825
 CATEGORIES=	astro geography
-MASTER_SITES=	BERLIOS
+MASTER_SITES=	http://mirror.amdmi3.ru/distfiles/
 
 MAINTAINER=	glebius@FreeBSD.org
 COMMENT=	Daemon that monitors one or more GPSes attached to a host computer
@@ -16,16 +16,17 @@ COMMENT=	Daemon that monitors one or more GPSes attached to a host computer
 BUILD_DEPENDS=	docbook-xsl>=0:${PORTSDIR}/textproc/docbook-xsl \
 		xsltproc:${PORTSDIR}/textproc/libxslt
 
+USE_BZIP2=	yes
 USE_GNOME=	pkgconfig
 USE_SCONS=	yes
 USE_RC_SUBR=	gpsd
 USE_PYTHON=	yes
 INSTALLS_EGGINFO=	yes
-PYDISTUTILS_EGGINFO=	gps-${PORTVERSION}.egg-info
+PYDISTUTILS_EGGINFO=	gps-3.1~dev.egg-info
 MAKE_JOBS_UNSAFE=yes
 
 SCONS_BUILDENV=	${SCONS_ENV}
-SCONS_ARGS=	prefix="${PREFIX}" mandir="/man"
+SCONS_ARGS=	prefix="${PREFIX}" mandir="/man" pkgconfigdir="/libdata/pkgconfig"
 
 MAN1=	cgps.1 gegps.1 gps.1 gpscat.1 gpsctl.1 gpsdecode.1 \
 	gpsfake.1  gpspipe.1 gpsprof.1 xgps.1 xgpsspeed.1 \
