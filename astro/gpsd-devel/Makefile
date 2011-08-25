@@ -84,7 +84,9 @@ OPTIONS=	AIVDM "Aivdm support" on \
 
 .include <bsd.port.options.mk>
 
-# This is only temporary for my tinderbox not to try these options
+.if ${OSVERSION} < 800069
+LIB_DEPENDS+=	usb:${PORTSDIR}/devel/libusb
+.endif
 
 # Options related to GPS protocols
 .if defined(WITHOUT_NMEA)
