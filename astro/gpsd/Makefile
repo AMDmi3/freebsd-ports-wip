@@ -6,7 +6,7 @@
 #
 
 PORTNAME=	gpsd
-PORTVERSION=	3.0.r20110825
+PORTVERSION=	3.0.r20110826
 CATEGORIES=	astro geography
 MASTER_SITES=	http://mirror.amdmi3.ru/distfiles/
 
@@ -39,6 +39,7 @@ MANCOMPRESSED=	no
 OPTIONS=	AIVDM "Aivdm support" on \
 		ASHTECH "Ashtech support" on \
 		CPPBIND "Build C++ bindings" on \
+		DBUS "DBUS support" off \
 		EARTHMATE "DeLorme EarthMate Zodiac support" on \
 		EVERMORE "Evermore binary support" on \
 		FV18 "San Jose Navigation FV-18 support" on \
@@ -77,8 +78,6 @@ OPTIONS=	AIVDM "Aivdm support" on \
 		UBX "UBX protocol support" on \
 		USB "libusb support for USB devices" on
 
-# Doesn't build
-#		DBUS "DBUS support" off \
 # Doesn't build when toggled
 #		SOCKEXPORT "Enable export over sockets" on \
 
@@ -206,13 +205,11 @@ SCONS_ARGS+=	pps_on_cts=yes
 #SCONS_ARGS+=	socket_export=no
 #.endif
 
-# doesn't build; too many unsolvable problems with lib detection,
-# include paths etc.
-#.if defined(WITH_DBUS)
-#LIB_DEPENDS+=	dbus:${PORTSDIR}/devel/dbus \
-#		dbus-glib-1.2:${PORTSDIR}/devel/dbus-glib
-#SCONS_ARGS+=	dbus_export=yes
-#.endif
+.if defined(WITH_DBUS)
+LIB_DEPENDS+=	dbus:${PORTSDIR}/devel/dbus \
+		dbus-glib-1.2:${PORTSDIR}/devel/dbus-glib
+SCONS_ARGS+=	dbus_export=yes
+.endif
 
 .if defined(WITHOUT_SHMEXPORT)
 SCONS_ARGS+=	shm_export=no
