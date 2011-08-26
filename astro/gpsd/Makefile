@@ -69,6 +69,7 @@ OPTIONS=	AIVDM "Aivdm support" on \
 		RTCM104V3 "rtcm104v3 support" on \
 		SHMEXPORT "Enable export via shared memory" on \
 		SIRF "SiRF chipset support" on \
+		SOCKEXPORT "Enable export over sockets" on \
 		SUPERSTARII "SuperStarII support" on \
 		TIMING "Build latency timing support" on \
 		TNT "True North Technologies support" on \
@@ -78,8 +79,6 @@ OPTIONS=	AIVDM "Aivdm support" on \
 		UBX "UBX protocol support" on \
 		USB "libusb support for USB devices" on
 
-# Doesn't build when toggled
-#		SOCKEXPORT "Enable export over sockets" on \
 
 .include <bsd.port.options.mk>
 
@@ -199,11 +198,9 @@ SCONS_ARGS+=	pps_on_cts=yes
 .endif
 
 # Export methods
-
-# Won't build
-#.if defined(WITHOUT_SOCKEXPORT)
-#SCONS_ARGS+=	socket_export=no
-#.endif
+.if defined(WITHOUT_SOCKEXPORT)
+SCONS_ARGS+=	socket_export=no
+.endif
 
 .if defined(WITH_DBUS)
 LIB_DEPENDS+=	dbus:${PORTSDIR}/devel/dbus \
