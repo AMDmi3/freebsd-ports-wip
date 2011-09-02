@@ -31,6 +31,7 @@ USE_PYTHON=	yes
 CONFIGURE_ARGS+=--enable-python
 PLIST_SUB+=	PYTHON=""
 BUILD_DEPENDS+=	swig:${PORTSDIR}/devel/swig13
+PKGNAMESUFFIX=	-python
 .else
 PLIST_SUB+=	PYTHON="@comment "
 .endif
