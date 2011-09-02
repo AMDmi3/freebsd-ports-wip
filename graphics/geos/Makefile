@@ -1,0 +1,27 @@
+# New ports collection makefile for:	geos
+# Date created:		19 December 2003
+# Whom:		 	Leonardo Martins <lmartins@nepe.eee.ufg.br>
+#
+# $FreeBSD: ports/graphics/geos/Makefile,v 1.28 2011/06/29 17:19:18 beech Exp $
+#
+
+PORTNAME=	geos
+PORTVERSION=	3.3.0
+PORTREVISION=	1
+CATEGORIES=	graphics geography
+MASTER_SITES=	http://download.osgeo.org/geos/
+
+MAINTAINER=	konstantin@saurbier.net
+COMMENT=	GEOS implements all the OpenGIS "Simple Features for SQL"
+
+LICENSE=	LGPL21
+
+USE_AUTOTOOLS=	libtool
+USE_BZIP2=	YES
+USE_GMAKE=	YES
+USE_LDCONFIG=	YES
+
+post-install:
+		@${LN} -s ${PREFIX}/lib/libgeos-${PORTVERSION}.so ${PREFIX}/lib/libgeos.so.0
+
+.include <bsd.port.mk>
