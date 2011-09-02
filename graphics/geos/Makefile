@@ -30,6 +30,7 @@ OPTIONS=	PYTHON "Enable python bindings" off
 USE_PYTHON=	yes
 CONFIGURE_ARGS+=--enable-python
 PLIST_SUB+=	PYTHON=""
+BUILD_DEPENDS+=	swig:${PORTSDIR}/devel/swig13
 .else
 PLIST_SUB+=	PYTHON="@comment "
 .endif
