@@ -6,13 +6,14 @@
 #
 
 PORTNAME=	flare
-PORTVERSION=	v013
+PORTVERSION=	v014
 CATEGORIES=	games
-MASTER_SITES=	GOOGLE_CODE
+MASTER_SITES=	http://cloud.github.com/downloads/clintbellanger/flare/ \
+		http://mirror.amdmi3.ru/files/
 DISTNAME=	${PORTNAME}_src_${PORTVERSION}
 
 MAINTAINER=	amdmi3@FreeBSD.org
-COMMENT=	Empty comment
+COMMENT=	Free Libre Action Roleplaying Engine
 
 PROJECTHOST=	flare-engine
 
@@ -23,8 +24,11 @@ MAKE_JOBS_SAFE=	yes
 
 CMAKE_SOURCE_PATH=	${WRKSRC}/build
 
+LATEST_LINK=	flare-rpg
+
 PORTDOCS=	*
 
+# this should go away in v015
 post-patch:
 	@${REINPLACE_CMD} -e 's|SDLmain|$${SDLMAIN_LIBRARY}|' ${WRKSRC}/build/CMakeLists.txt
 
