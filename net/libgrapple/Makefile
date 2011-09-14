@@ -27,7 +27,6 @@ OPTIONS=	SSL "Enable OpenSSL support" yes
 
 .if defined(WITHOUT_SSL)
 CONFIGURE_ARGS+=--disable-openssl
-
 .else
 USE_OPENSSL=	yes
 CONFIGURE_ENV+=	OPENSSL_CFLAGS="-I${OPENSSLINC} " \
