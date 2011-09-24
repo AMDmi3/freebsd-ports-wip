@@ -27,8 +27,4 @@ OPTIONS=	SIMD "Enable SIMD support (SSE)" off
 CMAKE_ARGS+=	-DWITH_SSE:BOOL=TRUE
 .endif
 
-.if ${OSVERSION} < 700000
-BROKEN=		Requires posix_memalign()
-.endif
-
 .include <bsd.port.mk>
