@@ -28,9 +28,34 @@ PORTDOCS=	*
 MANLANG=	"" cs fi
 MAN1=		notion.1 pwm3.1
 
-.if defined(NOPORTDOCS)
+OPTIONS=	XINERAMA "Xinerama module support" on \
+		XRANDR "Xrandr module support" on
+
+.include <bsd.port.options.mk>
+
+.if !defined(WITHOUT_XINERAMA)
+USE_XORG+=	xinerama
+PLIST_SUB+=	XINERAMA=""
+.else
+PLIST_SUB+=	XINERAMA="@comment "
+.endif
+
+.if !defined(WITHOUT_XRANDR)
+USE_XORG+=	xrandr
+PLIST_SUB+=	XRANDR=""
+.else
+PLIST_SUB+=	XRANDR="@comment "
+.endif
+
 post-patch:
+.if defined(NOPORTDOCS)
 	@${REINPLACE_CMD} -e '/^_install:/,/^$$/ d' ${WRKSRC}/Makefile
+.endif
+.if defined(WITHOUT_XINERAMA)
+	@${REINPLACE_CMD} -e 's|mod_xinerama||' ${WRKSRC}/modulelist.mk
+.endif
+.if defined(WITHOUT_XRANDR)
+	@${REINPLACE_CMD} -e 's|mod_xrandr||' ${WRKSRC}/modulelist.mk
 .endif
 
 .include <bsd.port.mk>

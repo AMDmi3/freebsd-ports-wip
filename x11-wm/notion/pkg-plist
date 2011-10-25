@@ -46,9 +46,9 @@ lib/notion/lc/mod_sm.lc
 lib/notion/lc/mod_sp.lc
 lib/notion/lc/mod_statusbar.lc
 lib/notion/lc/mod_tiling.lc
-lib/notion/lc/mod_xinerama.lc
+%%XINERAMA%%lib/notion/lc/mod_xinerama.lc
 lib/notion/lc/mod_xkbevents.lc
-lib/notion/lc/mod_xrandr.lc
+%%XRANDR%%lib/notion/lc/mod_xrandr.lc
 lib/notion/lc/statusd_date.lc
 lib/notion/lc/statusd_load.lc
 lib/notion/lc/statusd_mail.lc
@@ -60,9 +60,9 @@ lib/notion/mod/mod_sm.so
 lib/notion/mod/mod_sp.so
 lib/notion/mod/mod_statusbar.so
 lib/notion/mod/mod_tiling.so
-lib/notion/mod/mod_xinerama.so
+%%XINERAMA%%lib/notion/mod/mod_xinerama.so
 lib/notion/mod/mod_xkbevents.so
-lib/notion/mod/mod_xrandr.so
+%%XRANDR%%lib/notion/mod/mod_xrandr.so
 share/locale/cs/LC_MESSAGES/ion3.mo
 share/locale/de/LC_MESSAGES/ion3.mo
 share/locale/fi/LC_MESSAGES/ion3.mo
