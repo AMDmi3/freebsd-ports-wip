@@ -25,7 +25,9 @@ MAKE_JOBS_UNSAFE=yes
 AUTOPLIST_DIRS=	${PREFIX}/bin/panda3d ${PREFIX}/include/panda3d \
 		${PREFIX}/lib/panda3d ${DATADIR}
 
-MAKEPANDA_ARGS=	${_MAKE_JOBS:C/-j/--threads /} --nothing
+MAKEPANDA_ARGS=	${_MAKE_JOBS:C/-j/--threads /} \
+		--override DEFAULT_PRC_DIR="<auto>etc/panda3d" \
+		--nothing
 MAKEPANDA_ARGS+=--use-direct --use-deploytools # required for successfull build
 MAKEPANDA_ARGS+=--use-zlib --use-png --use-jpeg --use-tiff # cheap
 
