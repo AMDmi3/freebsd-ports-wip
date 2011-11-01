@@ -1,0 +1,15 @@
+etc/panda3d/Confauto.prc
+etc/panda3d/Config.prc
+%%PYTHON_SITELIBDIR%%/panda3d.pth
+libdata/ldconfig/panda3d
+share/application-registry/panda3d.applications
+share/applications/pview.desktop
+share/mime-info/panda3d.keys
+share/mime-info/panda3d.mime
+share/mime/packages/panda3d.xml
+@dirrmtry share/mime/packages
+@dirrmtry share/mime-info
+@dirrmtry share/mime
+@dirrmtry share/applications
+@dirrmtry share/application-registry
+@dirrmtry etc/panda3d
