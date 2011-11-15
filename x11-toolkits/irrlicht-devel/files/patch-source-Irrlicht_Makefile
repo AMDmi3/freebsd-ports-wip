@@ -1,0 +1,64 @@
+--- source/Irrlicht/Makefile.orig	2011-05-19 01:32:00.000000000 +0400
++++ source/Irrlicht/Makefile	2011-11-16 01:01:03.000000000 +0400
+@@ -50,23 +50,20 @@
+ EXTRAOBJ =
+ LINKOBJ = $(IRRMESHOBJ) $(IRROBJ) $(IRRPARTICLEOBJ) $(IRRANIMOBJ) \
+ 	$(IRRVIDEOOBJ) $(IRRSWRENDEROBJ) $(IRRIOOBJ) $(IRROTHEROBJ) \
+-	$(IRRGUIOBJ) $(ZLIBOBJ) $(JPEGLIBOBJ) $(LIBPNGOBJ) $(LIBAESGM) \
+-	$(BZIP2OBJ) $(EXTRAOBJ)
++	$(IRRGUIOBJ) $(LIBAESGM) $(EXTRAOBJ)
+ 
+ ###############
+ #Compiler flags
+-CXXINCS = -I../../include -Izlib -Ijpeglib -Ilibpng
++CXXINCS = -I../../include -I${LOCALBASE}/include
+ CPPFLAGS += $(CXXINCS) -DIRRLICHT_EXPORTS=1
+ CXXFLAGS += -Wall -pipe -fno-exceptions -fno-rtti -fstrict-aliasing
+ ifndef NDEBUG
+ CXXFLAGS += -g -D_DEBUG
+ else
+-CXXFLAGS += -fexpensive-optimizations -O3
+ endif
+ ifdef PROFILE
+ CXXFLAGS += -pg
+ endif
+-CFLAGS := -O3 -fexpensive-optimizations -DPNG_THREAD_UNSAFE_OK -DPNG_NO_MMX_CODE -DPNG_NO_MNG_FEATURES
+ 
+ sharedlib sharedlib_osx: CXXFLAGS += -fPIC
+ sharedlib sharedlib_osx: CFLAGS += -fPIC
+@@ -77,14 +74,14 @@
+ endif
+ 
+ #Linux specific options
+-staticlib sharedlib install: SYSTEM = Linux
++staticlib sharedlib install: SYSTEM = FreeBSD
+ STATIC_LIB = libIrrlicht.a
+ LIB_PATH = ../../lib/$(SYSTEM)
+-INSTALL_DIR = /usr/local/lib
++INSTALL_DIR = ${PREFIX}/lib
+ sharedlib install: SHARED_LIB = libIrrlicht.so
+ staticlib sharedlib: LDFLAGS += --no-export-all-symbols --add-stdcall-alias
+-sharedlib: LDFLAGS += -L/usr/X11R6/lib$(LIBSELECT) -lGL -lXxf86vm
+-staticlib sharedlib: CXXINCS += -I/usr/X11R6/include
++sharedlib: LDFLAGS += -L${LOCALBASE}/lib -lGL -lXxf86vm -lpng -ljpeg
++staticlib sharedlib: CXXINCS += -I${LOCALBASE}/include
+ 
+ #OSX specific options
+ staticlib_osx sharedlib_osx install_osx: SYSTEM = MacOSX
+@@ -105,13 +102,13 @@
+ 
+ ####################
+ # All target, builds Irrlicht as static lib (libIrrlicht.a) and copies it into lib/Linux
+-all linux: staticlib
++all linux: staticlib sharedlib
+ 
+ # Builds Irrlicht as shared lib (libIrrlicht.so.versionNumber) and copies it into lib/Linux
+ sharedlib: $(LINKOBJ)
+-	$(CXX) $(CPPFLAGS) $(CXXFLAGS) -shared -Wl,-soname,$(SHARED_LIB).$(VERSION_MAJOR).$(VERSION_MINOR).$(VERSION_RELEASE) -o $(SHARED_LIB).$(VERSION) $^ $(LDFLAGS)
++	$(CXX) $(CPPFLAGS) $(CXXFLAGS) -shared -Wl,-soname,$(SHARED_LIB).$(SHLIB_VER) -o $(SHARED_LIB).$(SHLIB_VER) $^ $(LDFLAGS)
+ 	mkdir -p $(LIB_PATH)
+-	cp $(SHARED_LIB).$(VERSION) $(LIB_PATH)
++	cp $(SHARED_LIB).$(SHLIB_VER) $(LIB_PATH)
+ 
+ # Builds Irrlicht as static lib (libIrrlicht.a)
+ $(STATIC_LIB): $(LINKOBJ)

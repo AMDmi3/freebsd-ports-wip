@@ -3,7 +3,6 @@ include/irrlicht/CIndexBuffer.h
 include/irrlicht/CMeshBuffer.h
 include/irrlicht/CVertexBuffer.h
 include/irrlicht/EAttributes.h
-include/irrlicht/EShaderTypes.h
 include/irrlicht/ECullingTypes.h
 include/irrlicht/EDebugSceneTypes.h
 include/irrlicht/EDeviceTypes.h
@@ -19,6 +18,7 @@ include/irrlicht/EMessageBoxFlags.h
 include/irrlicht/EPrimitiveTypes.h
 include/irrlicht/ESceneNodeAnimatorTypes.h
 include/irrlicht/ESceneNodeTypes.h
+include/irrlicht/EShaderTypes.h
 include/irrlicht/ETerrainElements.h
 include/irrlicht/IAnimatedMesh.h
 include/irrlicht/IAnimatedMeshMD2.h
@@ -102,6 +102,7 @@ include/irrlicht/IQ3Shader.h
 include/irrlicht/IReadFile.h
 include/irrlicht/IReferenceCounted.h
 include/irrlicht/ISceneCollisionManager.h
+include/irrlicht/ISceneLoader.h
 include/irrlicht/ISceneManager.h
 include/irrlicht/ISceneNode.h
 include/irrlicht/ISceneNodeAnimator.h
@@ -273,6 +274,10 @@ lib/libIrrlicht.so.%%SHARED_LIB_VER%%
 %%EXAMPLES%%%%EXAMPLESDIR%%/media/gun.jpg
 %%EXAMPLES%%%%EXAMPLESDIR%%/media/gun.md2
 %%EXAMPLES%%%%EXAMPLESDIR%%/media/help.png
+%%EXAMPLES%%%%EXAMPLESDIR%%/media/icon_crosshairs16x16bw1.png
+%%EXAMPLES%%%%EXAMPLESDIR%%/media/icon_crosshairs16x16bw2.png
+%%EXAMPLES%%%%EXAMPLESDIR%%/media/icon_crosshairs16x16bw3.png
+%%EXAMPLES%%%%EXAMPLESDIR%%/media/icon_crosshairs16x16col.png
 %%EXAMPLES%%%%EXAMPLESDIR%%/media/iconlist.png
 %%EXAMPLES%%%%EXAMPLESDIR%%/media/impact.wav
 %%EXAMPLES%%%%EXAMPLESDIR%%/media/irr.ico
@@ -306,6 +311,7 @@ lib/libIrrlicht.so.%%SHARED_LIB_VER%%
 %%EXAMPLES%%%%EXAMPLESDIR%%/media/opengl.vsh
 %%EXAMPLES%%%%EXAMPLESDIR%%/media/opengllogo.png
 %%EXAMPLES%%%%EXAMPLESDIR%%/media/particle.bmp
+%%EXAMPLES%%%%EXAMPLESDIR%%/media/particlegreen.jpg
 %%EXAMPLES%%%%EXAMPLESDIR%%/media/particlered.bmp
 %%EXAMPLES%%%%EXAMPLESDIR%%/media/particlewhite.bmp
 %%EXAMPLES%%%%EXAMPLESDIR%%/media/portal1.bmp
@@ -338,6 +344,8 @@ lib/libIrrlicht.so.%%SHARED_LIB_VER%%
 %%EXAMPLES%%%%EXAMPLESDIR%%/media/wall.bmp
 %%EXAMPLES%%%%EXAMPLESDIR%%/media/wall.jpg
 %%EXAMPLES%%%%EXAMPLESDIR%%/media/water.jpg
+%%EXAMPLES%%%%EXAMPLESDIR%%/media/yodan mdl - readme.txt
+%%EXAMPLES%%%%EXAMPLESDIR%%/media/yodan.mdl
 %%EXAMPLES%%%%EXAMPLESDIR%%/media/zip.png
 @dirrm include/irrlicht
 %%EXAMPLES%%@dirrm %%EXAMPLESDIR%%/01.HelloWorld

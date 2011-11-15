@@ -6,18 +6,20 @@
 #
 
 PORTNAME=	irrlicht
-PORTVERSION=	1.7.2
-PORTREVISION=	1
+PORTVERSION=	r3843
 CATEGORIES=	x11-toolkits graphics
-MASTER_SITES=	SF/${PORTNAME}/Irrlicht%20SDK/1.7/${PORTVERSION}
+MASTER_SITES=	http://mirror.amdmi3.ru/distfiles/
+PKGNAMESUFFIX=	-devel
 
-MAINTAINER=	acm@FreeBSD.org
+MAINTAINER=	amdmi3@FreeBSD.org
 COMMENT=	High performance realtime 3D engine
 
 LIB_DEPENDS=	jpeg.11:${PORTSDIR}/graphics/jpeg \
 		png.6:${PORTSDIR}/graphics/png
 
-USE_ZIP=	yes
+CONFLICTS=	irrlicht-1.[0-9]*
+
+USE_BZIP2=	yes
 USE_DOS2UNIX=	Makefile *.cpp *.h *.txt
 USE_GMAKE=	yes
 USE_GL=		yes
@@ -28,6 +30,11 @@ PLIST_SUB+=	SHARED_LIB_VER=${SHARED_LIB_VER}
 SUB_FILES=	pkg-message
 BUILD_WRKSRC=	${WRKSRC}/source/Irrlicht
 
+CPPFLAGS+=	-DNO_IRR_USE_NON_SYSTEM_JPEG_LIB_ \
+		-DNO_IRR_USE_NON_SYSTEM_LIB_PNG_ \
+		-DNO_IRR_USE_NON_SYSTEM_ZLIB_ \
+		-DNO_IRR_COMPILE_WITH_BZIP2_
+
 SHARED_LIB_VER=	1
 EXAMPLEDIRS=	01.HelloWorld 02.Quake3Map 03.CustomSceneNode 04.Movement 05.UserInterface \
 		06.2DGraphics 07.Collision 08.SpecialFX 09.Meshviewer 10.Shaders \
@@ -36,7 +43,8 @@ EXAMPLEDIRS=	01.HelloWorld 02.Quake3Map 03.CustomSceneNode 04.Movement 05.UserIn
 
 OPTIONS=	DEBUG	"Compile with debugging simbols" off \
 		EXAMPLES	"Install example files"	on \
-		JOYSTICK	"Support for Linux Joystick" off
+		JOYSTICK	"Support for Linux Joystick" off \
+		OPTIMIZED_CFLAGS "Enable extra optimizations" on
 
 .include <bsd.port.pre.mk>
 
@@ -46,6 +54,11 @@ CFLAGS+=	-fPIC
 
 .if ${ARCH} == "sparc64"
 BROKEN=		Does not compile on sparc64
+.endif
+
+.if !defined(WITHOUT_OPTIMIZED_CFLAGS)
+CFLAGS+=	-O3 -fexpensive-optimizations
+CXXFLAGS+=	-O3 -fexpensive-optimizations
 .endif
 
 .if !defined(WITHOUT_EXAMPLES)
