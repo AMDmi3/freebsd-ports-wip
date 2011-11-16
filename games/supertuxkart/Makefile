@@ -6,7 +6,7 @@
 #
 
 PORTNAME=	supertuxkart
-PORTVERSION=	0.7
+PORTVERSION=	0.7.3
 CATEGORIES=	games
 MASTER_SITES=	SF/supertuxkart/SuperTuxKart/${PORTVERSION}
 EXTRACT_SUFX=	-src.tar.bz2
@@ -16,9 +16,10 @@ COMMENT=	Free 3D kart racing game
 
 LIB_DEPENDS=	vorbisfile.6:${PORTSDIR}/audio/libvorbis \
 		ogg.7:${PORTSDIR}/audio/libogg \
-		fribidi.3:${PORTSDIR}/converters/fribidi
-BUILD_DEPENDS=	${LOCALBASE}/lib/libIrrlicht.so:${PORTSDIR}/x11-toolkits/irrlicht
-RUN_DEPENDS=	${LOCALBASE}/lib/libIrrlicht.so:${PORTSDIR}/x11-toolkits/irrlicht
+		fribidi.3:${PORTSDIR}/converters/fribidi \
+		curl.6:${PORTSDIR}/ftp/curl
+BUILD_DEPENDS=	${LOCALBASE}/lib/libIrrlicht.so:${PORTSDIR}/x11-toolkits/irrlicht-devel
+RUN_DEPENDS=	${LOCALBASE}/lib/libIrrlicht.so:${PORTSDIR}/x11-toolkits/irrlicht-devel
 
 USE_BZIP2=	yes
 USE_GL=		gl glu glut
