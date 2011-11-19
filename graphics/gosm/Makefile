@@ -16,7 +16,7 @@ COMMENT=	Empty comment
 
 LIB_DEPENDS=	cairo.2:${PORTSDIR}/graphics/cairo \
 		curl.6:${PORTSDIR}/ftp/curl \
-		webkit-1.0.13:${PORTSDIR}/www/webkit-gtk2 \
+		webkitgtk-1.0.0:${PORTSDIR}/www/webkit-gtk2 \
 		png.6:${PORTSDIR}/graphics/png
 
 LICENSE=	GPLv3
