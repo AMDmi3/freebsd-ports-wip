@@ -12,7 +12,7 @@ MASTER_SITES=	SF/${PORTNAME}/${PORTNAME}/0.09
 DISTNAME=	${PORTNAME}.${PORTVERSION}
 
 MAINTAINER=	amdmi3@FreeBSD.org
-COMMENT=	Empty comment
+COMMENT=	OpenStreetMap browser
 
 LIB_DEPENDS=	cairo.2:${PORTSDIR}/graphics/cairo \
 		curl.6:${PORTSDIR}/ftp/curl \
