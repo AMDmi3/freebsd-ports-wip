@@ -12,7 +12,7 @@
 -LDFLAGS = -lm -lpthread -lexpat -lbz2\
 - `pkg-config --cflags --libs gtk+-2.0 gdk-2.0 pango cairo glib-2.0 gthread-2.0 libpng webkit-1.0` \
 - `curl-config --cflags --libs`
-+CFLAGS  += -I${LOCALBASE}/include -D BUILD=0 \
++CFLAGS  += -I${LOCALBASE}/include -D BUILD=1 \
 + `pkg-config --cflags gtk+-2.0 gdk-2.0 pango cairo glib-2.0 gthread-2.0 libpng webkit-1.0` \
 + `curl-config --cflags`
 +LDFLAGS += -L${LOCALBASE}/lib -lm -pthread -lexpat -lbz2\

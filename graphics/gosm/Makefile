@@ -38,9 +38,21 @@ post-extract:
 
 post-patch:
 	@${REINPLACE_CMD} -e 's|malloc.h|stdlib.h|' ${WRKSRC}/poi/RTree/*.c
+	@${REINPLACE_CMD} -e 's|/usr|${PREFIX}|' ${WRKSRC}/paths.h
 
 do-install:
-	${INSTALL_PROGRAM} ${WRKSRC}/gosm ${PREFIX}/bin
+	${INSTALL_PROGRAM} ${WRKSRC}/gosm ${PREFIX}/bin/
+	${MKDIR} ${DATADIR}/about
+	${INSTALL_DATA} ${WRKSRC}/about/*.html ${DATADIR}/about/
+	${INSTALL_DATA} ${WRKSRC}/about/*.png ${DATADIR}/about/
+	${MKDIR} ${DATADIR}/manual
+	${INSTALL_DATA} ${WRKSRC}/manual/*.html ${DATADIR}/manual/
+	${INSTALL_DATA} ${WRKSRC}/manual/*.png ${DATADIR}/manual/
+	${MKDIR} ${DATADIR}/namefinder/res
+	${INSTALL_DATA} ${WRKSRC}/namefinder/res/*.txt ${DATADIR}/namefinder/res/
+	${MKDIR} ${DATADIR}/poi/res/
+	${INSTALL_DATA} ${WRKSRC}/poi/res/poi_layers ${DATADIR}/poi/res/
+	cd ${WRKSRC} && ${COPYTREE_SHARE} "icons legend" ${DATADIR}/
 .if !defined(NOPORTDOCS)
 	${MKDIR} ${DOCSDIR}
 .for f in ${PORTDOCS}
