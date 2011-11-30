@@ -11,8 +11,9 @@ PORTREVISION=	3
 CATEGORIES=	x11
 MASTER_SITES=	http://dist.schmorp.de/rxvt-unicode/%SUBDIR%/
 MASTER_SITE_SUBDIR=	. Attic
+PKGNAMESUFFIX=	-amdmi3
 
-MAINTAINER=	thierry@FreeBSD.org
+MAINTAINER=	amdmi3@FreeBSD.org
 COMMENT=	A clone of the terminal emulator rxvt modified to support Unicode
 
 USE_GNOME=	pkgconfig
