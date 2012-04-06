@@ -1,4 +1,5 @@
-MyGUI, it is a GUI library for Ogre Rendering Engine, with accent
-on being fast, flexible and simple in using.
+MyGUI is a library for creating Graphical User Interfaces (GUIs)
+for games and 3D applications. The main goals of mygui are: speed,
+flexibility and ease of use.
 
-WWW: http://my-gui.sourceforge.net/
+WWW: http://mygui.info/
