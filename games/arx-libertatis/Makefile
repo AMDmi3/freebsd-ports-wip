@@ -32,12 +32,12 @@ MAKE_JOBS_SAFE=	yes
 MAN1=		arxsavetool.1 arxunpak.1
 MAN6=		arx.6
 
-OPTIONS=	CRASHREPORTER "Build creash reporter (requires Qt4)" on \
+OPTIONS=	CRASHREPORTER "Build crash reporter (requires Qt4)" off \
 		EDITOR "Build editor" off
 
 .include <bsd.port.options.mk>
 
-.if !defined(WITHOUT_CRASHREPORTER)
+.if defined(WITH_CRASHREPORTER)
 USE_QT_VER=	4
 QT_COMPONENTS=	corelib gui network rcc_build moc_build uic_build qmake_build
 CMAKE_ARGS+=	-DBUILD_CRASHREPORTER=ON
