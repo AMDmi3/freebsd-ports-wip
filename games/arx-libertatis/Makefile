@@ -32,8 +32,7 @@ MAKE_JOBS_SAFE=	yes
 MAN1=		arxsavetool.1 arxunpak.1
 MAN6=		arx.6
 
-OPTIONS=	CRASHREPORTER "Build crash reporter (requires Qt4)" off \
-		EDITOR "Build editor" off
+OPTIONS=	CRASHREPORTER "Build crash reporter (requires Qt4)" off
 
 .include <bsd.port.options.mk>
 
@@ -45,12 +44,6 @@ PLIST_SUB+=	CRASHREPORTER=""
 .else
 CMAKE_ARGS+=	-DBUILD_CRASHREPORTER=OFF
 PLIST_SUB+=	CRASHREPORTER="@comment "
-.endif
-
-.if defined(WITH_EDITOR)
-CMAKE_ARGS+=	-DBUILD_EDITOR=ON
-.else
-CMAKE_ARGS+=	-DBUILD_EDITOR=OFF
 .endif
 
 PORTDOCS=	AUTHORS CHANGELOG README.md
