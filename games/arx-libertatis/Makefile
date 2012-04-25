@@ -29,6 +29,8 @@ USE_CMAKE=	yes
 CMAKE_ARGS=	-DCMAKE_INSTALL_MANDIR="man" -DDATA_DIR=arx
 MAKE_JOBS_SAFE=	yes
 
+SUB_FILES=	pkg-message
+
 MAN1=		arxsavetool.1 arxunpak.1
 MAN6=		arx.6
 
@@ -48,12 +50,13 @@ PLIST_SUB+=	CRASHREPORTER="@comment "
 
 PORTDOCS=	AUTHORS CHANGELOG README.md
 
-.if !defined(NOPORTDOCS)
 post-install:
+.if !defined(NOPORTDOCS)
 	${MKDIR} ${DOCSDIR}
 .for f in ${PORTDOCS}
 	${INSTALL_DATA} ${WRKSRC}/${f} ${DOCSDIR}/
 .endfor
 .endif
+	@${ECHO_CMD}; ${CAT} ${PKGMESSAGE}; ${ECHO_CMD}
 
 .include <bsd.port.mk>
