@@ -472,9 +472,11 @@ lib/OGRE/cmake/FindOGRE.cmake
 lib/OGRE/cmake/FindOIS.cmake
 lib/OGRE/cmake/FindPkgMacros.cmake
 lib/OGRE/cmake/MacroLogFeature.cmake
+lib/OGRE/cmake/OgreAddTargets.cmake
 lib/OGRE/cmake/OgreConfigTargets.cmake
 lib/OGRE/cmake/OgreFindFrameworks.cmake
 lib/OGRE/cmake/OgreGetVersion.cmake
+lib/OGRE/cmake/PrecompiledHeader.cmake
 lib/OGRE/cmake/PreprocessorUtils.cmake
 lib/libOgreMain.so
 lib/libOgreMain.so.1.8.0

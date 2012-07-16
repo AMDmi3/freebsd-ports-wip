@@ -6,10 +6,10 @@
 #
 
 PORTNAME=	ogre3d
-DISTVERSION=	1.8.0-RC1
+PORTVERSION=	1.8.0
 CATEGORIES=	graphics devel
-MASTER_SITES=	SF/ogre/ogre/${DISTVERSION:C/\.[^\.]+$//g}/${DISTVERSION}
-DISTNAME=	ogre_src_v${DISTVERSION:C/-//:S/./-/g}
+MASTER_SITES=	SF/ogre/ogre/${PORTVERSION:C/\.[0-9]+$//g}/${PORTVERSION}
+DISTNAME=	ogre_src_v${PORTVERSION:S/./-/g}
 
 MAINTAINER=	oliver@FreeBSD.org
 COMMENT=	A scene-oriented, flexible 3D engine written in C++
@@ -26,6 +26,7 @@ USE_CMAKE=	YES
 USE_SDL=	sdl
 USE_XORG=	xaw
 MAKE_JOBS_SAFE=	yes
+USE_GCC=	4.6+
 
 .include <bsd.port.pre.mk>
 

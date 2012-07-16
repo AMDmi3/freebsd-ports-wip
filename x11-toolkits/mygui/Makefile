@@ -25,6 +25,7 @@ USE_CMAKE=	yes
 CMAKE_ARGS=	-DMYGUI_BUILD_DEMOS=OFF -DMYGUI_BUILD_DOCS=OFF
 MAKE_JOBS_SAFE=	yes
 USE_LDCONFIG=	yes
+USE_GCC=	4.6+
 
 post-patch:
 	@${REINPLACE_CMD} -e '/install/ s|lib/pkgconfig|libdata/pkgconfig|' \
