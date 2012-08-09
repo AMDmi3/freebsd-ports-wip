@@ -6,7 +6,7 @@
 #
 
 PORTNAME=	box2d
-PORTVERSION=	2.0.1
+PORTVERSION=	2.2.1
 CATEGORIES=	devel
 MASTER_SITES=	GOOGLE_CODE
 DISTNAME=	Box2D_v${PORTVERSION}
@@ -15,61 +15,21 @@ MAINTAINER=	amdmi3@FreeBSD.org
 COMMENT=	2D rigid body simulation library
 
 USE_ZIP=	yes
-USE_GMAKE=	yes
+USE_CMAKE=	yes
+CMAKE_ARGS+=	-DBOX2D_BUILD_EXAMPLES:BOOL=OFF
 MAKE_JOBS_SAFE=	yes
 
-WRKSRC=		${WRKDIR}/${DISTNAME}/Box2D
-BUILD_WRKSRC=	${WRKSRC}/Source
-ALL_TARGET=	Gen/float/libbox2d.a
-
-INCDIRS=	Collision Collision/Shapes Common Dynamics \
-		Dynamics/Contacts Dynamics/Joints
-
+DOCSDIR=	${PREFIX}/share/doc/Box2D
 PORTDOCS=	*
 
-OPTIONS=	TESTBED "Build testbed with Box2D deponstrations" off
+OPTIONS_DEFINE=	DOCS
 
 .include <bsd.port.options.mk>
 
-.if defined(WITH_TESTBED)
-BUILD_DEPENDS+=	${LOCALBASE}/lib/libglui.a:${PORTSDIR}/devel/glui
-USE_GL+=	glut
-PLIST_SUB+=	TESTBED=""
+.if ${PORT_OPTIONS:MDOCS}
+CMAKE_ARGS+=	-DBOX2D_INSTALL_DOC:BOOL=ON
 .else
-PLIST_SUB+=	TESTBED="@comment "
-.endif
-
-post-patch:
-	@${REINPLACE_CMD} -e 's|[gc]++|${CXX}|; s|make|$${MAKE}|; /CXXFLAGS=/d' \
-		${WRKSRC}/Makefile ${WRKSRC}/Source/Makefile \
-		${WRKSRC}/Examples/TestBed/Makefile
-	@${FIND} ${WRKSRC}/Examples/TestBed -name "*.cpp" -o -name "*.h" | \
-		${XARGS} ${REINPLACE_CMD} -e 's|".*/glut.h"|<GL/glut.h>|; \
-		s|".*/glui.h"|<glui.h>|'
-
-.if defined(WITH_TESTBED)
-post-build:
-	cd ${WRKSRC}/Examples/TestBed && ${SETENV} ${MAKE_ENV} ${GMAKE} \
-		${MAKE_FLAGS} ${MAKEFILE} ${_MAKE_JOBS} ${MAKE_ARGS} \
-		${ALL_TARGET:C/libbox2d.a/testbed/}
-.endif
-
-do-install:
-	${INSTALL_DATA} ${BUILD_WRKSRC}/${ALL_TARGET} ${PREFIX}/lib/
-	${INSTALL_DATA} ${WRKSRC}/Include/Box2D.h ${PREFIX}/include/
-.for d in ${INCDIRS}
-	${MKDIR} ${PREFIX}/include/Box2D/${d}
-	${INSTALL_DATA} ${BUILD_WRKSRC}/${d}/*.h ${PREFIX}/include/Box2D/${d}
-.endfor
-	${REINPLACE_CMD} -i '' -e 's|"\.\./Source/\(.*\)"|<Box2D/\1>|' \
-		${PREFIX}/include/Box2D.h
-.if !defined(NOPORTDOCS)
-	${MKDIR} ${DOCSDIR}
-	cd ${WRKSRC}/Documentation && ${COPYTREE_SHARE} '*' ${DOCSDIR}/
-.endif
-.if defined(WITH_TESTBED)
-	${INSTALL_PROGRAM} ${WRKSRC}/Examples/TestBed/${ALL_TARGET:C/libbox2d.a/testbed/} \
-		${PREFIX}/bin/box2d-testbed
+CMAKE_ARGS+=	-DBOX2D_INSTALL_DOC:BOOL=OFF
 .endif
 
 .include <bsd.port.mk>
