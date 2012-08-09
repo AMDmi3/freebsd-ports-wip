@@ -1,3 +1,4 @@
+%%TESTBED%%bin/box2d-testbed
 include/Box2D/Box2D.h
 include/Box2D/Collision/Shapes/b2ChainShape.h
 include/Box2D/Collision/Shapes/b2CircleShape.h

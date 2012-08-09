@@ -16,13 +16,13 @@ COMMENT=	2D rigid body simulation library
 
 USE_ZIP=	yes
 USE_CMAKE=	yes
-CMAKE_ARGS+=	-DBOX2D_BUILD_EXAMPLES:BOOL=OFF
 MAKE_JOBS_SAFE=	yes
 
 DOCSDIR=	${PREFIX}/share/doc/Box2D
 PORTDOCS=	*
 
-OPTIONS_DEFINE=	DOCS
+OPTIONS_DEFINE=	DOCS TESTBED
+TESTBED_DESC=	Build and install testbed (requires glut and glui)
 
 .include <bsd.port.options.mk>
 
@@ -30,6 +30,21 @@ OPTIONS_DEFINE=	DOCS
 CMAKE_ARGS+=	-DBOX2D_INSTALL_DOC:BOOL=ON
 .else
 CMAKE_ARGS+=	-DBOX2D_INSTALL_DOC:BOOL=OFF
+.endif
+
+.if ${PORT_OPTIONS:MTESTBED}
+CMAKE_ARGS+=	-DBOX2D_BUILD_EXAMPLES:BOOL=ON
+USE_GL+=	glut
+LIB_DEPENDS+=	glui:${PORTSDIR}/devel/glui
+PLIST_SUB+=	TESTBED=""
+.else
+CMAKE_ARGS+=	-DBOX2D_BUILD_EXAMPLES:BOOL=OFF
+PLIST_SUB+=	TESTBED="@comment "
+.endif
+
+.if ${PORT_OPTIONS:MTESTBED}
+post-install:
+	${INSTALL_PROGRAM} ${WRKSRC}/Testbed/Testbed ${PREFIX}/bin/box2d-testbed
 .endif
 
 .include <bsd.port.mk>
