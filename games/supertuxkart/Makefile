@@ -14,10 +14,10 @@ EXTRACT_SUFX=	-src.tar.bz2
 MAINTAINER=	amdmi3@FreeBSD.org
 COMMENT=	Free 3D kart racing game
 
-LIB_DEPENDS=	vorbisfile.6:${PORTSDIR}/audio/libvorbis \
-		ogg.7:${PORTSDIR}/audio/libogg \
-		fribidi.3:${PORTSDIR}/converters/fribidi \
-		curl.6:${PORTSDIR}/ftp/curl
+LIB_DEPENDS=	vorbisfile:${PORTSDIR}/audio/libvorbis \
+		ogg:${PORTSDIR}/audio/libogg \
+		fribidi:${PORTSDIR}/converters/fribidi \
+		curl:${PORTSDIR}/ftp/curl
 BUILD_DEPENDS=	${LOCALBASE}/lib/libIrrlicht.so:${PORTSDIR}/x11-toolkits/irrlicht-devel
 RUN_DEPENDS=	${LOCALBASE}/lib/libIrrlicht.so:${PORTSDIR}/x11-toolkits/irrlicht-devel
 

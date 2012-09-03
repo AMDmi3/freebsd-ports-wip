@@ -15,7 +15,7 @@ MAINTAINER=	amdmi3@FreeBSD.org
 COMMENT=	High performance realtime 3D engine
 
 LIB_DEPENDS=	jpeg.11:${PORTSDIR}/graphics/jpeg \
-		png.6:${PORTSDIR}/graphics/png
+		png15:${PORTSDIR}/graphics/png
 
 CONFLICTS=	irrlicht-1.[0-9]*
 
