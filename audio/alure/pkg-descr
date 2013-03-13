@@ -8,9 +8,9 @@ are handled through the same API.
 
 Currently ALURE includes a basic .wav and .aif file reader, and can
 leverage external libraries such as libSndFile (for extended wave
-formats and several others), VorbisFile (for Ogg Vorbis), and FLAC
-(for FLAC and Ogg FLAC). External libraries can also be dynamically
-loaded at run-time, or individually disabled outright at compile
-time.
+formats and several others), VorbisFile (for Ogg Vorbis), FLAC (for
+FLAC and Ogg FLAC), and others. External libraries can also be
+dynamically loaded at run-time, or individually disabled outright
+at compile time.
 
 WWW: http://kcat.strangesoft.net/alure.html
