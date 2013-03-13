@@ -1,15 +1,11 @@
-# New ports collection makefile for:	notion
-# Date created:		20 Oct 2011
-# Whom:			Dmitry Marakasov <amdmi3@FreeBSD.org>
-#
+# Created by: Dmitry Marakasov <amdmi3@FreeBSD.org>
 # $FreeBSD$
-#
 
 PORTNAME=	notion
-PORTVERSION=	20110930
+PORTVERSION=	2013030200
 CATEGORIES=	x11-wm
-MASTER_SITES=	SF/${PORTNAME}/snapshots
-DISTNAME=	${PORTNAME}-snapshot-${PORTVERSION}-src
+MASTER_SITES=	SF/${PORTNAME}
+DISTNAME=	${PORTNAME}-3-${PORTVERSION}-src
 
 MAINTAINER=	amdmi3@FreeBSD.org
 COMMENT=	A tiling tabbed window manager
@@ -21,26 +17,28 @@ USE_GMAKE=	yes
 USE_GETTEXT=	yes
 MAKE_JOBS_SAFE=	yes
 
-WRKSRC=		${WRKDIR}/notion
+WRKSRC=		${WRKDIR}/${PORTNAME}-3-${PORTVERSION}
 
 PORTDOCS=	*
 
 MANLANG=	"" cs fi
-MAN1=		notion.1 pwm3.1
+MAN1=		notion.1
 
-OPTIONS=	XINERAMA "Xinerama module support" on \
-		XRANDR "Xrandr module support" on
+OPTIONS_DEFINE=	XINERAMA XRANDR DOCS
+OPTIONS_DEFAULT=XINERAMA XRANDR
+XINERAMA_DESC=	Xinerama module support
+XRANDR_DESC=	Xrandr module support
 
 .include <bsd.port.options.mk>
 
-.if !defined(WITHOUT_XINERAMA)
+.if ${PORT_OPTIONS:MXINERAMA}
 USE_XORG+=	xinerama
 PLIST_SUB+=	XINERAMA=""
 .else
 PLIST_SUB+=	XINERAMA="@comment "
 .endif
 
-.if !defined(WITHOUT_XRANDR)
+.if ${PORT_OPTIONS:MXRANDR}
 USE_XORG+=	xrandr
 PLIST_SUB+=	XRANDR=""
 .else
@@ -48,13 +46,13 @@ PLIST_SUB+=	XRANDR="@comment "
 .endif
 
 post-patch:
-.if defined(NOPORTDOCS)
+.if ! ${PORT_OPTIONS:MDOCS}
 	@${REINPLACE_CMD} -e '/^_install:/,/^$$/ d' ${WRKSRC}/Makefile
 .endif
-.if defined(WITHOUT_XINERAMA)
+.if ! ${PORT_OPTIONS:MXINERAMA}
 	@${REINPLACE_CMD} -e 's|mod_xinerama||' ${WRKSRC}/modulelist.mk
 .endif
-.if defined(WITHOUT_XRANDR)
+.if ! ${PORT_OPTIONS:MXRANDR}
 	@${REINPLACE_CMD} -e 's|mod_xrandr||' ${WRKSRC}/modulelist.mk
 .endif
 

@@ -1,5 +1,5 @@
 bin/notion
-bin/pwm3plus
+bin/notionflux
 etc/notion/cfg_defaults.lua
 etc/notion/cfg_dock.lua
 etc/notion/cfg_kludges.lua
@@ -7,11 +7,11 @@ etc/notion/cfg_layouts.lua
 etc/notion/cfg_menu.lua
 etc/notion/cfg_notion.lua
 etc/notion/cfg_notioncore.lua
-etc/notion/cfg_pwm.lua
 etc/notion/cfg_query.lua
 etc/notion/cfg_sp.lua
 etc/notion/cfg_statusbar.lua
 etc/notion/cfg_tiling.lua
+%%XRANDR%%etc/notion/cfg_xrandr.lua
 etc/notion/look.lua
 etc/notion/look_brownsteel.lua
 etc/notion/look_clean.lua
@@ -40,6 +40,7 @@ lib/notion/lc/ioncore_wd.lc
 lib/notion/lc/ioncore_winprops.lc
 lib/notion/lc/mod_dock.lc
 lib/notion/lc/mod_menu.lc
+lib/notion/lc/mod_notionflux.lc
 lib/notion/lc/mod_query.lc
 lib/notion/lc/mod_query_chdir.lc
 lib/notion/lc/mod_sm.lc
@@ -55,6 +56,7 @@ lib/notion/lc/statusd_mail.lc
 lib/notion/mod/de.so
 lib/notion/mod/mod_dock.so
 lib/notion/mod/mod_menu.so
+lib/notion/mod/mod_notionflux.so
 lib/notion/mod/mod_query.so
 lib/notion/mod/mod_sm.so
 lib/notion/mod/mod_sp.so
@@ -63,12 +65,13 @@ lib/notion/mod/mod_tiling.so
 %%XINERAMA%%lib/notion/mod/mod_xinerama.so
 lib/notion/mod/mod_xkbevents.so
 %%XRANDR%%lib/notion/mod/mod_xrandr.so
-share/locale/cs/LC_MESSAGES/ion3.mo
-share/locale/de/LC_MESSAGES/ion3.mo
-share/locale/fi/LC_MESSAGES/ion3.mo
-share/locale/fr/LC_MESSAGES/ion3.mo
+share/locale/cs/LC_MESSAGES/notion.mo
+share/locale/de/LC_MESSAGES/notion.mo
+share/locale/fi/LC_MESSAGES/notion.mo
+share/locale/fr/LC_MESSAGES/notion.mo
 %%DATADIR%%/ion-completeman
 %%DATADIR%%/ion-runinxterm
+%%DATADIR%%/notion-lock
 %%DATADIR%%/welcome.cs.txt
 %%DATADIR%%/welcome.fi.txt
 %%DATADIR%%/welcome.txt
