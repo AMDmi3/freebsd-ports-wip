@@ -13,8 +13,7 @@ COMMENT=	A tiling tabbed window manager
 USE_BZIP2=	yes
 USE_XORG=	x11 xext sm xinerama xrandr
 USE_LUA=	5.1+
-USE_GMAKE=	yes
-USE_GETTEXT=	yes
+USES=		gmake gettext
 MAKE_JOBS_SAFE=	yes
 
 WRKSRC=		${WRKDIR}/${PORTNAME}-3-${PORTVERSION}
