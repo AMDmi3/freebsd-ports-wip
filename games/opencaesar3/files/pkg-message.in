@@ -1,0 +1,12 @@
+==========================================================================
+
+openCaesar3 requires original Caesar 3 data files. Consult
+
+%%DOCSDIR%%/INSTALL_LINUX
+
+section 3. Installing resources. Note that resources should be 
+extracted into
+
+%%DATADIR%%/
+
+==========================================================================

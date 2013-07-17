@@ -1,0 +1,8 @@
+bin/caesar3
+%%DATADIR%%/cities.model
+%%DATADIR%%/construction.model
+%%DATADIR%%/house.model
+%%DATADIR%%/pantheon.model
+%%DATADIR%%/resources/README
+@dirrm %%DATADIR%%/resources
+@dirrm %%DATADIR%%
