@@ -12,8 +12,7 @@ COMMENT=	AL Utilities REtooled
 
 USE_BZIP2=	yes
 USE_OPENAL=	al
-USE_GNOME=	pkgconfig
-USE_CMAKE=	yes
+USES=		cmake pkgconfig
 CMAKE_ARGS=	-DCMAKE_REQUIRED_INCLUDES="${LOCALBASE}/include" \
 		-DCMAKE_REQUIRED_LIBRARIES="-L${LOCALBASE}/lib"
 MAKE_JOBS_SAFE=	yes
@@ -92,7 +91,6 @@ CMAKE_ARGS+=	-DBUILD_EXAMPLES:BOOL=OFF
 post-patch:
 	@${REINPLACE_CMD} -e 's|lib$${LIB_SUFFIX}/pkgconfig|libdata/pkgconfig|; \
 		/FIND_PROGRAM.*NaturalDocs/d; s|LIBFLAC|FLAC|' ${WRKSRC}/CMakeLists.txt
-#	@${REINPLACE_CMD} -e 's|/usr/local|${LOCALBASE}|' ${WRKSRC}/cmake/*.cmake
 .if ! ${PORT_OPTIONS:MDOCS}
 	@${REINPLACE_CMD} -e '/INSTALL.*DIRECTORY.*docs\/html/,/^)/d' \
 		${WRKSRC}/CMakeLists.txt
