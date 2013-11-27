@@ -14,7 +14,6 @@ USE_BZIP2=	yes
 USE_XORG=	x11 xext sm xinerama xrandr
 USE_LUA=	5.1+
 USES=		gmake gettext
-MAKE_JOBS_SAFE=	yes
 
 WRKSRC=		${WRKDIR}/${PORTNAME}-3-${PORTVERSION}
 
@@ -22,6 +21,8 @@ PORTDOCS=	*
 
 MANLANG=	"" cs fi
 MAN1=		notion.1
+
+NO_STAGE=	yes
 
 OPTIONS_DEFINE=	XINERAMA XRANDR DOCS
 OPTIONS_DEFAULT=XINERAMA XRANDR
@@ -45,6 +46,7 @@ PLIST_SUB+=	XRANDR="@comment "
 .endif
 
 post-patch:
+	@${REINPLACE_CMD} -e 's|gcc|${CC}|g' ${WRKSRC}/ioncore/Makefile
 .if ! ${PORT_OPTIONS:MDOCS}
 	@${REINPLACE_CMD} -e '/^_install:/,/^$$/ d' ${WRKSRC}/Makefile
 .endif
