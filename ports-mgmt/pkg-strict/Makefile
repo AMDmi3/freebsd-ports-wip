@@ -1,7 +1,8 @@
-# $FreeBSD: ports-mgmt/pkg/Makefile 335210 2013-11-29 18:34:34Z marino $
+# $FreeBSD: ports-mgmt/pkg/Makefile 336622 2013-12-16 11:16:41Z bapt $
 
 PORTNAME=	pkg
-DISTVERSION=	1.2.1
+DISTVERSION=	1.2.4
+PORTREVISION=	1
 CATEGORIES=	ports-mgmt
 MASTER_SITES=	http://files.etoilebsd.net/pkg/ \
 		http://mirror.shatow.net/freebsd/${PORTNAME}/ \
@@ -10,7 +11,7 @@ MASTER_SITES=	http://files.etoilebsd.net/pkg/ \
 MAINTAINER=	portmgr@FreeBSD.org
 COMMENT=	New generation package manager
 
-LICENSE=	BSD
+LICENSE=	BSD2CLAUSE
 
 USE_XZ=		yes
 
@@ -18,8 +19,7 @@ USE_XZ=		yes
 # With no dependency at all
 NO_CCACHE=	yes
 USE_LDCONFIG=	yes
-USES=		uidfix shebangfix
-SHEBANG_FILES=	scripts/completion/_pkg.bash.in
+USES=		uidfix
 MAKE_ARGS+=	PKG_PORTSDIR=${PORTSDIR}
 
 MAKE_ENV+=	WITHOUT_PROFILE=yes __MAKE_CONF=/dev/null SRCCONF=/dev/null \
