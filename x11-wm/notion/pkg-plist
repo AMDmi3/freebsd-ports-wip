@@ -65,6 +65,9 @@ lib/notion/mod/mod_tiling.so
 %%XINERAMA%%lib/notion/mod/mod_xinerama.so
 lib/notion/mod/mod_xkbevents.so
 %%XRANDR%%lib/notion/mod/mod_xrandr.so
+man/cs/man1/notion.1.gz
+man/fi/man1/notion.1.gz
+man/man1/notion.1.gz
 share/locale/cs/LC_MESSAGES/notion.mo
 share/locale/de/LC_MESSAGES/notion.mo
 share/locale/fi/LC_MESSAGES/notion.mo
@@ -76,6 +79,10 @@ share/locale/fr/LC_MESSAGES/notion.mo
 %%DATADIR%%/welcome.fi.txt
 %%DATADIR%%/welcome.txt
 @dirrm %%DATADIR%%
+@dirrmtry man/fi/man1
+@dirrmtry man/fi
+@dirrmtry man/cs/man1
+@dirrmtry man/cs
 @dirrm lib/notion/mod
 @dirrm lib/notion/lc
 @dirrm lib/notion/bin
