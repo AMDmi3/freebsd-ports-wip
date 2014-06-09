@@ -23,6 +23,7 @@ USE_XORG=	x11 xinerama
 USE_GL=		gl glu
 USE_SDL=	sdl
 WRKSRC=		${WRKDIR}/AstroMenace
+CMAKE_ARGS=	-DDATADIR="${DATADIR}"
 
 PLIST_FILES=	bin/AstroMenace
 PORTDATA=	*
@@ -31,7 +32,7 @@ PORTDOCS=	*
 OPTIONS_DEFINE=	DOCS
 
 post-build:
-	cd ${WRKSRC} && ./AstroMenace --pack --rawdata=./RAW_VFS_DATA
+	cd ${WRKSRC} && ./AstroMenace dos2unix --pack --rawdata=./RAW_VFS_DATA --dir="${WRKSRC}"
 
 do-install:
 	${INSTALL_PROGRAM} ${WRKSRC}/AstroMenace ${STAGEDIR}${PREFIX}/bin/
