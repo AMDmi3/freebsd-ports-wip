@@ -7,9 +7,14 @@ Notion is a tiling, tabbed window manager for the X window system:
  o Static: most tiled window managers are 'dynamic'. Notion, by
    contrast, does not lay out or resize the tiles for you. You're in
    control.
+
+Features include:
+
+ o Workspaces: each workspace has its own tiling
  o Multihead: the mod_xinerama plugin provides very nice dual-monitor
    support
- o Xrandr: mod_xrandr picks up changes in the xrandr configuration
+ o RandR: mod_xrandr picks up changes in the xrandr configuration,
    without the need for restarting Notion
+ o Extensibility: Notion can be extended with lua scripts
 
-WWW:	http://notion.sourceforge.net/
+WWW: http://notion.sourceforge.net/
