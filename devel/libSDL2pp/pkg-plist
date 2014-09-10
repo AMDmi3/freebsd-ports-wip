@@ -1,0 +1,15 @@
+include/SDL2pp/Config.hh
+include/SDL2pp/Exception.hh
+include/SDL2pp/ExtraRWops.hh
+include/SDL2pp/Point.hh
+include/SDL2pp/RWops.hh
+include/SDL2pp/Rect.hh
+include/SDL2pp/Renderer.hh
+include/SDL2pp/SDL.hh
+include/SDL2pp/SDL2pp.hh
+include/SDL2pp/Texture.hh
+include/SDL2pp/Window.hh
+lib/libSDL2pp.so
+lib/libSDL2pp.so.0
+lib/libSDL2pp.so.0.0.0
+@dirrm include/SDL2pp
