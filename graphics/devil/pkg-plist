@@ -4,6 +4,7 @@ include/IL/il.h
 include/IL/ilu.h
 include/IL/ilu_region.h
 %%X11%%include/IL/ilut.h
+%%X11%%include/IL/ilut_config.h
 lib/libIL.a
 lib/libIL.so
 lib/libIL.so.1

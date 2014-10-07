@@ -2,15 +2,19 @@
 # $FreeBSD: head/graphics/devil/Makefile 370262 2014-10-06 23:40:52Z amdmi3 $
 
 PORTNAME=	devil
-PORTVERSION=	1.7.8
+PORTVERSION=	1.7.8.20141007
 PORTREVISION=	18
 PORTEPOCH=	1
 CATEGORIES=	graphics
-MASTER_SITES=	SF/openil/DevIL/${PORTVERSION}
-DISTNAME=	DevIL-${PORTVERSION}
 
 MAINTAINER=	amdmi3@FreeBSD.org
 COMMENT=	Full featured cross-platform image library
+
+USE_GITHUB=	yes
+GH_ACCOUNT=	AMDmi3
+GH_PROJECT=	DevIL
+GH_TAGNAME=	${GH_COMMIT}
+GH_COMMIT=	efbbed2
 
 USES=		autoreconf pkgconfig libtool
 GNU_CONFIGURE=	yes
@@ -21,7 +25,7 @@ INSTALL_TARGET=	install-strip
 USE_LDCONFIG=	yes
 USE_GCC=	any
 
-WRKSRC=		${WRKDIR}/${DISTNAME:tl}
+WRKSRC=		${WRKDIR}/${GH_ACCOUNT}-${GH_PROJECT}-${GH_COMMIT}/DevIL
 
 CPPFLAGS+=	-I${LOCALBASE}/include
 LDFLAGS+=	-L${LOCALBASE}/lib
@@ -94,8 +98,6 @@ post-patch:
 	@${REINPLACE_CMD} -e '/^SUBDIRS/s|docs||g' ${WRKSRC}/Makefile.am
 	@${REINPLACE_CMD} -e '/^pkgdir=/s|$$(libdir)/|$$(prefix)/libdata/|g' \
 		${WRKSRC}/data/Makefile.am
-	@${REINPLACE_CMD} -e 's|<malloc\.h>|<stdlib.h>|g' \
-		${WRKSRC}/src-ILU/ilur/ilur.c
 
 post-install:
 	@${RMDIR} ${STAGEDIR}${DATADIR}/examples
