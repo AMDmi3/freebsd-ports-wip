@@ -2,7 +2,7 @@
 # $FreeBSD: head/x11-fm/walcommander/Makefile 368422 2014-09-18 07:20:06Z amdmi3 $
 
 PORTNAME=	walcommander
-PORTVERSION=	0.17.0
+PORTVERSION=	0.17.0.git20141007
 CATEGORIES=	x11-fm
 
 MAINTAINER=	amdmi3@FreeBSD.org
@@ -14,8 +14,8 @@ LICENSE_FILE=	${WRKSRC}/LICENSE
 USE_GITHUB=	yes
 GH_ACCOUNT=	corporateshark
 GH_PROJECT=	WalCommander
-GH_TAGNAME=	release-${PORTVERSION}
-GH_COMMIT=	a73beeb
+GH_TAGNAME=	${GH_COMMIT}
+GH_COMMIT=	d5d1008
 
 USES=		compiler:c++11-lib cmake
 USE_XORG=	x11
