@@ -2,8 +2,7 @@
 # $FreeBSD: head/graphics/devil/Makefile 370262 2014-10-06 23:40:52Z amdmi3 $
 
 PORTNAME=	devil
-PORTVERSION=	1.7.8.20141007
-PORTREVISION=	18
+PORTVERSION=	1.7.8.20141120
 PORTEPOCH=	1
 CATEGORIES=	graphics
 
@@ -14,7 +13,7 @@ USE_GITHUB=	yes
 GH_ACCOUNT=	AMDmi3
 GH_PROJECT=	DevIL
 GH_TAGNAME=	${GH_COMMIT}
-GH_COMMIT=	efbbed2
+GH_COMMIT=	c81f422
 
 USES=		autoreconf pkgconfig libtool
 GNU_CONFIGURE=	yes
