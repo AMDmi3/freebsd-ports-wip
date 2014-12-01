@@ -2,18 +2,19 @@
 # $FreeBSD$
 
 PORTNAME=	notion
-PORTVERSION=	2014052800
+PORTVERSION=	2014091000
 CATEGORIES=	x11-wm
-MASTER_SITES=	SF/${PORTNAME}
-DISTNAME=	${PORTNAME}-3-${PORTVERSION}-src
 
 MAINTAINER=	amdmi3@FreeBSD.org
 COMMENT=	A tiling tabbed window manager
 
+USE_GITHUB=	yes
+GH_ACCOUNT=	raboof
+GH_TAGNAME=	${GH_COMMIT}
+GH_COMMIT=	b74deb9
+
 USE_XORG=	x11 xext sm
 USES=		gmake gettext tar:bzip2 lua pkgconfig
-
-WRKSRC=		${WRKDIR}/${PORTNAME}-3-${PORTVERSION}
 
 PORTDOCS=	*
 
