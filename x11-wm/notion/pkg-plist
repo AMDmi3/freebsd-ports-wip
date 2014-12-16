@@ -79,13 +79,3 @@ share/locale/fr/LC_MESSAGES/notion.mo
 %%DATADIR%%/welcome.cs.txt
 %%DATADIR%%/welcome.fi.txt
 %%DATADIR%%/welcome.txt
-@dirrm %%DATADIR%%
-@dirrmtry man/fi/man1
-@dirrmtry man/fi
-@dirrmtry man/cs/man1
-@dirrmtry man/cs
-@dirrm lib/notion/mod
-@dirrm lib/notion/lc
-@dirrm lib/notion/bin
-@dirrm lib/notion
-@dirrm etc/notion
