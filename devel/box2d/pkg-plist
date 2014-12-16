@@ -49,12 +49,3 @@ lib/Box2D/Box2D-targets-release.cmake
 lib/Box2D/Box2D-targets.cmake
 lib/Box2D/Box2DConfig.cmake
 lib/libBox2D.a
-@dirrm lib/Box2D
-@dirrm include/Box2D/Rope
-@dirrm include/Box2D/Dynamics/Joints
-@dirrm include/Box2D/Dynamics/Contacts
-@dirrm include/Box2D/Dynamics
-@dirrm include/Box2D/Common
-@dirrm include/Box2D/Collision/Shapes
-@dirrm include/Box2D/Collision
-@dirrm include/Box2D

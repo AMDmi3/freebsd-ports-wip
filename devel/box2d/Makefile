@@ -1,9 +1,5 @@
-# New ports collection makefile for:	box2d
-# Date created:		08 Feb 2010
-# Whom:			Dmitry Marakasov <amdmi3@FreeBSD.org>
-#
+# Created by: Dmitry Marakasov <amdmi3@FreeBSD.org>
 # $FreeBSD$
-#
 
 PORTNAME=	box2d
 PORTVERSION=	2.2.1
@@ -14,9 +10,8 @@ DISTNAME=	Box2D_v${PORTVERSION}
 MAINTAINER=	amdmi3@FreeBSD.org
 COMMENT=	2D rigid body simulation library
 
-USE_ZIP=	yes
-USE_CMAKE=	yes
-MAKE_JOBS_SAFE=	yes
+USES=		cmake zip
+CONFIGURE_ENV=	LOCALBASE="${LOCALBASE}"
 
 DOCSDIR=	${PREFIX}/share/doc/Box2D
 PORTDOCS=	*
