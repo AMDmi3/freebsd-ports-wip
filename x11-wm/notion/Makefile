@@ -6,15 +6,14 @@ PORTVERSION=	2014091000
 CATEGORIES=	x11-wm
 
 MAINTAINER=	amdmi3@FreeBSD.org
-COMMENT=	A tiling tabbed window manager
+COMMENT=	Tiling tabbed window manager
 
 USE_GITHUB=	yes
 GH_ACCOUNT=	raboof
-GH_TAGNAME=	${GH_COMMIT}
-GH_COMMIT=	b74deb9
+GH_TAGNAME=	b74deb9
 
 USE_XORG=	x11 xext sm
-USES=		gmake gettext tar:bzip2 lua pkgconfig
+USES=		gettext gmake lua pkgconfig tar:bzip2
 
 PORTDOCS=	*
 
