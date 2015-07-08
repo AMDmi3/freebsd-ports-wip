@@ -1,6 +1,6 @@
---- system-autodetect.mk.orig	2014-05-28 02:00:18.000000000 +0400
-+++ system-autodetect.mk	2014-06-09 19:03:02.992638832 +0400
-@@ -19,7 +19,7 @@
+--- system-autodetect.mk.orig	2015-06-13 14:37:26 UTC
++++ system-autodetect.mk
+@@ -22,7 +22,7 @@ BINDIR=$(PREFIX)/bin
  # Some .lua files and ion-* shell scripts
  SHAREDIR=$(PREFIX)/share/notion
  # Manual pages
@@ -9,7 +9,7 @@
  # Some documents
  DOCDIR=$(PREFIX)/share/doc/notion
  # Nothing at the moment
-@@ -63,7 +63,7 @@
+@@ -66,7 +66,7 @@ endif
  
  # Flags to link with libdl. Even if PRELOAD_MODULES=1, you may need this
  # setting (for e.g. Lua, when not instructed by pkg-config).
@@ -18,7 +18,7 @@
  
  
  ##
-@@ -77,7 +77,7 @@
+@@ -80,7 +80,7 @@ include $(TOPDIR)/build/lua-detect.mk
  ##
  
  # Paths
@@ -27,7 +27,7 @@
  # SunOS/Solaris
  #X11_PREFIX ?= /usr/openwin
  
-@@ -86,7 +86,7 @@
+@@ -89,7 +89,7 @@ X11_INCLUDES=-I$(X11_PREFIX)/include
  
  # XFree86 libraries up to 4.3.0 have a bug that can cause a segfault.
  # The following setting  should  work around that situation.
@@ -36,7 +36,7 @@
  
  # Use the Xutf8 routines (XFree86 extension) instead of the Xmb routines
  # in an UTF-8 locale. (No, you don't need this in UTF-8 locales, and 
-@@ -109,11 +109,11 @@
+@@ -112,11 +112,11 @@ DEFINES += -DCF_XFREE86_TEXTPROP_BUG_WOR
  #DEFINES += -DCF_NO_LOCALE -DCF_NO_GETTEXT
  
  # On some other systems you may need to explicitly link against libintl.
@@ -50,7 +50,7 @@
  
  
  ##
-@@ -128,7 +128,7 @@
+@@ -131,7 +131,7 @@ HAS_SYSTEM_ASPRINTF ?= 1
  # The following setting is needed with GNU libc for clock_gettime and the
  # monotonic clock. Other systems may not need it, or may not provide a
  # monotonic clock at all (which Ion can live with, and usually detect).
@@ -59,7 +59,7 @@
  
  # Cygwin needs this. Also when you disable _BSD_SOURCE you may need it.
  #DEFINES += -DCF_NO_GETLOADAVG
-@@ -149,7 +149,7 @@
+@@ -152,7 +152,7 @@ CC ?= gcc
  
  WARN=-W -Wall -pedantic 
  
@@ -68,12 +68,18 @@
            -DHAS_SYSTEM_ASPRINTF=$(HAS_SYSTEM_ASPRINTF)
  
  LDFLAGS += -Wl,--as-needed $(LIBS) $(EXTRA_LIBS)
-@@ -167,7 +167,7 @@
- BSD_SOURCE?=-D_BSD_SOURCE
+@@ -166,11 +166,11 @@ EXPORT_DYNAMIC=-Xlinker --export-dynamic
+ 
+ #C89_SOURCE=-ansi
+ 
+-POSIX_SOURCE?=-D_POSIX_C_SOURCE=200112L
+-BSD_SOURCE?=-D_BSD_SOURCE
++#POSIX_SOURCE?=-D_POSIX_C_SOURCE=200112L
++#BSD_SOURCE?=-D_BSD_SOURCE
  
  # Most systems
 -XOPEN_SOURCE=-D_XOPEN_SOURCE -D_XOPEN_SOURCE_EXTENDED
-+XOPEN_SOURCE=-D_XOPEN_SOURCE -D_XOPEN_SOURCE_EXTENDED -D__XSI_VISIBLE
++#XOPEN_SOURCE=-D_XOPEN_SOURCE -D_XOPEN_SOURCE_EXTENDED
  # SunOS, (Irix)
  #XOPEN_SOURCE=-D__EXTENSIONS__
  

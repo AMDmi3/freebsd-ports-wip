@@ -2,7 +2,8 @@
 # $FreeBSD$
 
 PORTNAME=	notion
-PORTVERSION=	2014091000
+DISTVERSIONPREFIX=	3-
+PORTVERSION=	2015061300
 CATEGORIES=	x11-wm
 
 MAINTAINER=	amdmi3@FreeBSD.org
@@ -10,10 +11,10 @@ COMMENT=	Tiling tabbed window manager
 
 USE_GITHUB=	yes
 GH_ACCOUNT=	raboof
-GH_TAGNAME=	b74deb9
 
 USE_XORG=	x11 xext sm
 USES=		gettext gmake lua pkgconfig tar:bzip2
+MAKE_ENV=	LUA_VERSION=${LUA_VER}
 
 PORTDOCS=	*
 
