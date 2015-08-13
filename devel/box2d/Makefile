@@ -30,7 +30,7 @@ CMAKE_ARGS+=	-DBOX2D_INSTALL_DOC:BOOL=OFF
 .if ${PORT_OPTIONS:MTESTBED}
 CMAKE_ARGS+=	-DBOX2D_BUILD_EXAMPLES:BOOL=ON
 USE_GL+=	glut
-LIB_DEPENDS+=	glui:${PORTSDIR}/devel/glui
+LIB_DEPENDS+=	libglui.so:${PORTSDIR}/devel/glui
 PLIST_SUB+=	TESTBED=""
 .else
 CMAKE_ARGS+=	-DBOX2D_BUILD_EXAMPLES:BOOL=OFF
@@ -39,7 +39,7 @@ PLIST_SUB+=	TESTBED="@comment "
 
 .if ${PORT_OPTIONS:MTESTBED}
 post-install:
-	${INSTALL_PROGRAM} ${WRKSRC}/Testbed/Testbed ${PREFIX}/bin/box2d-testbed
+	${INSTALL_PROGRAM} ${WRKSRC}/Testbed/Testbed ${STAGEDIR}${PREFIX}/bin/box2d-testbed
 .endif
 
 .include <bsd.port.mk>
