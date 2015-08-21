@@ -19,7 +19,8 @@ LIB_DEPENDS=	libmsgpack.so:${PORTSDIR}/devel/msgpack \
 USES=		compiler:c++11-lib cmake zip
 CMAKE_ARGS=	-DCUSTOM_MANDIR="${PREFIX}/man" \
 		-DCUSTOM_EXAMPLE_CONF_DIR="${PREFIX}/etc" \
-		-DRUN_IN_PLACE=0
+		-DRUN_IN_PLACE=0 \
+		-DENABLE_SYSTEM_MSGPACK=1
 
 PORTDATA=	*
 PORTDOCS=	*
