@@ -88,8 +88,8 @@ CMAKE_ARGS+=	-DIRRLICHT_INCLUDE_DIR:STRING="${IRRLICHT_INCLUDE_DIR}"
 EXTRA_PATCHES+=	${FILESDIR}/extra-patch-irrlichtdepend
 .endif
 
-# when 1.x.x released:
-#		libjsoncpp.so:${PORTSDIR}/devel/jsoncpp
+# when jsoncpp 1.x.x released:
+#LIB_DEPENDS+=libjsoncpp.so:${PORTSDIR}/devel/jsoncpp
 #CMAKE_ARGS+=-DENABLE_SYSTEM_JSONCPP=1 -DJSON_INCLUDE_DIR=${LOCALBASE}/include/jsoncpp
 
 post-patch:
