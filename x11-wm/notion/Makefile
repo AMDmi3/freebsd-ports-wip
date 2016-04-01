@@ -13,7 +13,7 @@ USE_GITHUB=	yes
 GH_ACCOUNT=	raboof
 
 USE_XORG=	x11 xext sm
-USES=		gettext gmake lua pkgconfig tar:bzip2
+USES=		gettext gmake lua pkgconfig
 MAKE_ENV=	LUA_VERSION=${LUA_VER}
 
 PORTDOCS=	*
