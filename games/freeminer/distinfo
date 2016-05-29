@@ -1,2 +1,5 @@
-SHA256 (freeminer-0.4.13.7.zip) = 35b1f118cd19b471362992dc48bc528d0f25b2d1916e886b69e5c9acc77e29eb
-SIZE (freeminer-0.4.13.7.zip) = 7529691
+TIMESTAMP = 1464479943
+SHA256 (freeminer-freeminer-0.4.14.8_GH0.tar.gz) = 2a7d044d30aed20e4669c8804a1d38e6ce060ba1a89ce11a8f00cf46b3c2de7e
+SIZE (freeminer-freeminer-0.4.14.8_GH0.tar.gz) = 5650886
+SHA256 (freeminer-enet-1f8eb62_GH0.tar.gz) = 67a317ec1fc5cddb963842687d222b9c3c5cdc34f8907dfc425388708391f0c8
+SIZE (freeminer-enet-1f8eb62_GH0.tar.gz) = 79639
