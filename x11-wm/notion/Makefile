@@ -27,18 +27,14 @@ XINERAMA_USE=	XORG=xinerama
 XRANDR_DESC=	Xrandr module support
 XRANDR_USE=	XORG=xrandr
 
-.include <bsd.port.options.mk>
-
-post-patch:
-.if ! ${PORT_OPTIONS:MDOCS}
+post-patch-DOCS-off:
 	@${REINPLACE_CMD} -e '/^_install:/,/^$$/ d' ${WRKSRC}/Makefile
-.endif
-.if ! ${PORT_OPTIONS:MXINERAMA}
+
+post-patch-XINARAMA-off:
 	@${REINPLACE_CMD} -e 's|mod_xinerama||' ${WRKSRC}/modulelist.mk
-.endif
-.if ! ${PORT_OPTIONS:MXRANDR}
+
+post-patch-XRANDR-off:
 	@${REINPLACE_CMD} -e 's|mod_xrandr||' ${WRKSRC}/modulelist.mk
-.endif
 
 post-install:
 	${STRIP_CMD} ${STAGEDIR}${PREFIX}/bin/notion \
