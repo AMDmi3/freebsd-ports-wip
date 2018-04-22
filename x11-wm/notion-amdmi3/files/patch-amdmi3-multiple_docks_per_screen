@@ -1,11 +1,9 @@
-Allow multiple docks per screen (I use two docks at screen sides
-for two gkrellm's for different machines)
---- mod_dock/dock.c.orig	Wed May 24 20:23:26 2006
-+++ mod_dock/dock.c	Fri Jul 28 05:52:09 2006
-@@ -1198,14 +1198,6 @@
+--- mod_dock/dock.c.orig	2017-05-05 14:55:07 UTC
++++ mod_dock/dock.c
+@@ -1156,14 +1156,6 @@ WDock *mod_dock_create(ExtlTab tab)
          return NULL;
      }
-     
+ 
 -    for(dock=docks; dock; dock=dock->dock_next){
 -        if(region_screen_of((WRegion*)dock)==screen){
 -            warn("Screen %d already has a dock. Refusing to create another.",
