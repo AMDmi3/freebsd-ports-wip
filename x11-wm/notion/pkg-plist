@@ -24,6 +24,7 @@ etc/notion/look_newviolet.lua
 etc/notion/look_simpleblue.lua
 etc/notion/lookcommon_clean.lua
 etc/notion/lookcommon_emboss.lua
+etc/notion/net_client_list.lua
 lib/notion/bin/ion-completefile
 lib/notion/bin/ion-statusd
 lib/notion/bin/notionflux
