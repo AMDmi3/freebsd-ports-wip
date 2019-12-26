@@ -1,9 +1,0 @@
-gosm is a browser for free map data from the OpenStreetMap project
-with extra useful features:
-
- * measure distances
- * load map data to harddisk for offline viewing
- * create even huge images from whole areas
- * create PDF documents from existing map data
-
-WWW:	http://gosm.sourceforge.net/

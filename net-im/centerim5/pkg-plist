@@ -1,9 +1,0 @@
-bin/centerim5
-lib/libcppconsui.a
-lib/libcppconsui.la
-lib/libcppconsui.so
-lib/libcppconsui.so.0
-%%NLS%%share/locale/cs/LC_MESSAGES/centerim5.mo
-%%NLS%%share/locale/de/LC_MESSAGES/centerim5.mo
-%%NLS%%share/locale/ru/LC_MESSAGES/centerim5.mo
-%%NLS%%share/locale/sv/LC_MESSAGES/centerim5.mo

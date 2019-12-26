@@ -1,8 +1,0 @@
-Justniffer is a tcp packet sniffer. It can log network traffic in
-a customizable way. Can simulate web server logs as the Apache
-access_log. May include information such as response times. Useful
-to troubleshoot performance issues. It can also capture http traffic
-content (html, javascript, css, images, sounds, etc..) and save it
-in a directory
-
-WWW: http://justniffer.sourceforge.net/
