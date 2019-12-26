@@ -11,8 +11,8 @@ COMMENT=	Tiling tabbed window manager
 USE_GITHUB=	yes
 GH_ACCOUNT=	raboof
 
+USES=		gettext gmake lua pkgconfig xorg
 USE_XORG=	x11 xext sm ice
-USES=		gettext gmake lua pkgconfig
 MAKE_ENV=	LUA_VERSION=${LUA_VER}
 
 PORTDOCS=	*
