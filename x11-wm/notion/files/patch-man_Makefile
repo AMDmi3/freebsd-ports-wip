@@ -1,0 +1,11 @@
+--- man/Makefile.orig	2020-03-06 10:41:24 UTC
++++ man/Makefile
+@@ -8,7 +8,7 @@ include $(TOPDIR)/build/system-inc.mk
+ 
+ ######################################
+ 
+-SHELL=bash -o pipefail
++SHELL=sh -o pipefail
+ 
+ TARGETS=notion.1 notionflux.1 welcome.txt
+ 
