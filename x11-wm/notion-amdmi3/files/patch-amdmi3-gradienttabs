@@ -1,6 +1,6 @@
---- de/draw.c.orig	2019-05-01 06:05:10 UTC
+--- de/draw.c.orig	2020-03-06 10:41:24 UTC
 +++ de/draw.c
-@@ -438,9 +438,38 @@ void debrush_do_draw_box(DEBrush *brush, const WRectan
+@@ -436,9 +436,38 @@ void debrush_do_draw_box(DEBrush *brush, const WRectan
      GC gc=brush->d->normal_gc;
  
      if(TRUE/*needfill*/){
@@ -9,14 +9,14 @@
 -                       geom->w, geom->h);
 +        int i,j;
 +        float col1[3] = {
-+            (cg->hl >> 16) & 0xFF,
-+            (cg->hl >> 8) & 0xFF,
-+            (cg->hl) & 0xFF,
++            (PIXEL(cg->hl) >> 16) & 0xFF,
++            (PIXEL(cg->hl) >> 8) & 0xFF,
++            (PIXEL(cg->hl)) & 0xFF,
 +        };
 +        float col2[3] = {
-+            (cg->sh >> 16) & 0xFF,
-+            (cg->sh >> 8) & 0xFF,
-+            (cg->sh) & 0xFF,
++            (PIXEL(cg->sh) >> 16) & 0xFF,
++            (PIXEL(cg->sh) >> 8) & 0xFF,
++            (PIXEL(cg->sh)) & 0xFF,
 +        };
 +        float col[3];
 +        float k;
