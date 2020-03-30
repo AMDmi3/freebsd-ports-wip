@@ -1,0 +1,17 @@
+--- mod_dock/dock.c.orig	2017-05-05 14:55:07 UTC
++++ mod_dock/dock.c
+@@ -1156,14 +1156,6 @@ WDock *mod_dock_create(ExtlTab tab)
+         return NULL;
+     }
+ 
+-    for(dock=docks; dock; dock=dock->dock_next){
+-        if(region_screen_of((WRegion*)dock)==screen){
+-            warn("Screen %d already has a dock. Refusing to create another.",
+-                 screenid);
+-            return NULL;
+-        }
+-    }
+-
+     if(!floating){
+         mplex_get_stdisp((WMPlex*)screen, &stdisp, &din);
+         if(stdisp!=NULL && !extl_table_is_bool_set(tab, "force")){
